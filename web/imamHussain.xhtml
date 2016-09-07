@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template_9_3.xhtml">
+    <ui:define name="pageTitle">
+        <h:outputText value="هیئت انصار الحجه" />
+    </ui:define>
+    <ui:define name="description">
+        <meta name="description" content="پخش زنده حرم امام حسین" />
+    </ui:define>
+
+    <ui:define name="mainPanel">
+        <p:panel id="panel" header="پخش زنده حرم امام حسین" >
+            <!--<embed height="400%" width="100%" flashvars="file=rtmp://5.79.86.21/live/&amp;id=ih&amp;autostart=true" allowfullscreen="true" allowscriptaccess="always" src="http://imamhussain.org/static/flash/liveplayer.swf" />-->
+        <div id="myElement">Loading the player...</div>
+
+        <script type="text/javascript">
+            jwplayer("myElement").setup({
+                file: "file=rtmp://5.79.86.21/live/&amp;id=ih&amp;autostart=true",
+                image: ""
+            });
+        </script>
+        </p:panel>
+    </ui:define>
+</ui:composition>
+
+</html>

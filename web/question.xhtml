@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template_9_3.xhtml">
+    <ui:define name="pageTitle">
+        <h:outputText value="سایت سوال-سؤال و جواب-سؤال و جواب دینی-اسلام-سئوال-جواب سوال-مشاوره رایگان | هیئت انصار الحجه | متوسلین به حضرت زهرا | استادحیدری زارع" />
+    </ui:define>
+    <ui:define name="description">
+        <meta name="description" content="سوال خود را از طریق سایت از استاد حیدری زارع بپرسید و جواب آن را در سایت یا کانال تلگرام دریافت نمایید" />
+    </ui:define>
+
+    <ui:define name="mainPanel">
+        <h:form>
+            <!--<p:growl id="growl" showDetail="true" sticky="true" />-->
+            <p:panel id="panel" header="پرسیدن سوال" >
+                <h:graphicImage value="http://en.hdyo.org/assets/ask-question-1-ff9bc6fa5eaa0d7667ae7a5a4c61330c.jpg" style="margin: 20px auto; max-width: 313px;" styleClass="img-responsive" />
+                <p dir="rtl" style="text-align: center;"><strong><span style="color:#008000;">&laquo;فَسْئَلُوا أَهْلَ الذِّکْرِ إِنْ کُنْتُمْ لاتَعْلَمُونَ&raquo;</span></strong></p>
+                <p dir="rtl" style="text-align: center;"><span style="color:#008000;">اگر این موضوع را نمى دانید بروید و از اهل اطلاع بپرسید</span></p>
+                <p dir="rtl" style="text-align: center;">آیه 43 سوره &laquo;نحل&raquo;</p>
+                <br />
+                <p:messages id="messages">
+                    <p:effect type="pulsate" event="load" delay="500" />
+                </p:messages>
+                <div style="text-align: center;">
+                    <h:outputLabel for="subject" value="موضوع سؤال: " />
+                    <br />
+                    <p:inputText id="subject" value="#{questionWebBean.subject}" />
+                    <br />
+                    <br />
+
+                    <h:outputLabel for="question" value="متن سؤال: " />
+                    <br />
+                    <p:inputTextarea id="question" value="#{questionWebBean.question}" required="true" requiredMessage="لطفا متن سؤالتان را وارد نمایید" />
+                    <br />
+                    <br />
+
+                    <h:outputLabel for="mobilePhone" value="شماره موبایل: " />
+                    <br />
+                    <p:inputText id="mobilePhone" value="#{questionWebBean.mobilePhone}" maxlength="11" />
+                    <br />
+                    <br />
+
+                    <h:outputLabel for="eMail" value="ایمیل: " />
+                    <br />
+                    <p:inputText id="eMail" value="#{questionWebBean.eMail}" />
+                    <br />
+                    <br />
+
+                    <p:commandButton value="ثبت سؤال" action="#{questionWebBean.fireQuestion}" update="panel" />
+                </div>
+            </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>
+
+</html>

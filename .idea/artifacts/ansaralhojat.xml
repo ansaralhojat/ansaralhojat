@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ansaralhojat">
+    <output-path>$PROJECT_DIR$/out/artifacts/ansaralhojat</output-path>
+    <root id="archive" name="ansaralhojat.war">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ansaralhojat" />
+          <element id="jpa-descriptors" facet="ansaralhojat/jpa/JPA" />
+          <element id="directory" name="META-INF" />
+        </element>
+        <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/faces-config.xml" />
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib" />
+        </element>
+        <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/beans.xml" />
+      </element>
+      <element id="javaee-facet-resources" facet="ansaralhojat/web/Web" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ansaralhojat-core">
+    <output-path>$PROJECT_DIR$/out/artifacts/ansaralhojat_core</output-path>
+    <root id="archive" name="ansaralhojat-core.jar">
+      <element id="module-output" name="ansaralhojat" />
+    </root>
+  </artifact>
+</component>

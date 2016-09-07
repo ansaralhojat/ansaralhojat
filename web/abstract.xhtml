@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template_9_3.xhtml">
+    <ui:define name="pageTitle">
+        <h:outputText value="#{abstractWebBean.selectedText == null ? 'متن سخنرانی مذهبی-متن سخنرانی های مذهبی' : abstractWebBean.getCompleteSubject(abstractWebBean.selectedText)} | هیئت انصار الحجه | متوسلین به حضرت زهرا | استاد حیدری زارع " />
+    </ui:define>
+    <ui:define name="description">
+        <meta name="description" content="#{abstractWebBean.selectedText == null ? 'متن سخنرانی مذهبی-متن سخنرانی های مذهبی' : abstractWebBean.getCompleteSubject(abstractWebBean.selectedText)}" />
+    </ui:define>
+
+    <ui:define name="mainPanel">
+
+        <h:form>
+
+            <p:panel header="خلاصه سخنرانی ها" rendered="#{abstractWebBean.selectedText != null}">
+                <h1 class="header" style="text-align: center;">#{abstractWebBean.getCompleteSubject(abstractWebBean.selectedText)}</h1>
+                <span><h:outputText value="#{abstractWebBean.selectedText.text}" escape="false" /></span>
+                <div style="text-align: center;"><h:commandButton value="بازگشت"  action="#{funWebBean.back}" styleClass="btn btn-success btn-lg" /></div>
+            </p:panel>
+
+            <p:dataTable var="text" value="#{abstractWebBean.texts}" rows="4" paginator="true" lazy="true" dir="rtl" rendered="#{abstractWebBean.selectedText == null}">
+                <p:column headerText="خلاصه سخرانی ها::کوتاه">
+                    <span>
+                        <h:outputFormat value="موضوع: " styleClass="subject" />
+                        <h:outputFormat value="#{abstractWebBean.getCompleteSubject(text)}" />
+                    </span>
+                    <br />
+                    <br />
+                    <span><h:outputText value="#{text.abstractText}" escape="false" /></span>
+                    <a href="abstract.xhtml?loadedId=#{text.id}" style="float: left; color: #11800a;"><span>مشاهده مطلب</span></a>
+                </p:column>
+            </p:dataTable>
+
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

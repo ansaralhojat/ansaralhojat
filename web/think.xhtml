@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template_9_3.xhtml">
+    <ui:define name="pageTitle">
+        <h:outputText value= "شبهه-سوال هیئت انصار الحجه | متوسلین به حضرت زهرا | استاد حیدری زارع" />
+    </ui:define>
+    <ui:define name="description">
+        <meta name="description" content="شبهه-سوال " />
+    </ui:define>
+
+    <ui:define name="mainPanel">
+        <h:form id="form">
+            <p:growl id="growl" showDetail="true">
+                <p:effect type="pulsate" event="bounce" delay="500" />
+            </p:growl>
+            <p:dialog modal="true" widgetVar="statusDialog" header="لطفا صبر کنید" draggable="false" closable="false" resizable="false">
+                <h:graphicImage value="/resource/image/ajax-loader.gif" />
+            </p:dialog>
+
+            <p:panel header="بخش شبهات" rendered="#{thinkWebBean.selectedThink == null}">
+                <ui:repeat value="#{thinkWebBean.thinks}" var="think">
+                    <h:graphicImage value="/resource/icon/question.png" styleClass="img-responsive" style="float: right;" />
+                    <h:outputText value=" " />
+                    <a href="think.xhtml?loadedId=#{think.id}"><span>#{think.question} (#{think.count==null?0:think.count} بازدید)</span></a>
+                    <br />
+                    <br />
+                </ui:repeat>
+            </p:panel>
+
+            <p:panel header="پاسخ شبهه" rendered="#{thinkWebBean.selectedThink != null}">
+                <h:graphicImage value="/resource/icon/question.png" styleClass="img-responsive" style="float: right;" />
+                <h:outputText value=" " />
+                <p><h:outputText value="#{thinkWebBean.selectedThink.question}" style="color: blue;" /></p>
+                <h:graphicImage value="/resource/icon/resolve.jpeg" styleClass="img-responsive" style="float: right;" />
+                <h:outputText value="  " />
+                <h:outputText value="#{thinkWebBean.selectedThink.completeResolve}" escape="false" />
+                <a href="#{thinkWebBean.selectedThink.resourceLink}" target="_blank"><h:outputText value="منبع: #{thinkWebBean.selectedThink.resourceName}" style="color: #0000FF;"/></a>
+                <br />
+                <div style="text-align: center;"><h:commandButton value="بازگشت"  action="#{thinkWebBean.back}" styleClass="btn btn-success btn-lg" /></div>
+            </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>
+
+</html>

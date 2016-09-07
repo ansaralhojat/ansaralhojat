@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    <title><ui:insert name="pageTitle" /></title>
+    <ui:insert name="description" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
+    <h:outputStylesheet>
+        @font-face {
+            font-family:'BYekan';/*تعریف یک نام برای فونت*/
+            src:url('resource/font/Yekan.eot');/*اکسپلورر 9 به بعد*/
+            src:local('bYekan'),/*بررسی نصب بودن فونت در سیستم کاربر*/
+            local('b Yekan'),/*برای برخی از مرورگرها مانند سافاری*/
+            url('resource/font/Yekan.eot?#iefix') format('embedded-opentype'),/*هک برای اکسپلورر 8 و ماقبل*/
+            url('resource/font/Yekan.woff') format('woff'),/*مرورگر های جدید*/
+            url('resource/font/Yekan.ttf') format('truetype'),/*تمام مرورگرها به جزء اکسپلورر*/
+            url('resource/font/Yekan.svg#BYekan') format('svg');/*نسخه های قدیمی سیستم عامل iOS*/
+            font-style:normal;
+            font-weight:normal;
+        }
+        p, span, a {
+            font-family:BYekan, Tahoma, Geneva, sans-serif;
+            font-size:16px;
+            line-height: 200%;
+        }
+        .header {
+            font-family:BYekan, Tahoma, Geneva, sans-serif;
+            font-size:18px;
+            text-align: center;
+            color: #11800a;
+            font-weight: bold;
+            line-height: 200%;
+        }
+        .subject {
+            font-family:BYekan, Tahoma, Geneva, sans-serif;
+            color: #278CBA;
+            font-weight: bold;
+            font-size:16px;
+            line-height: 200%;
+        }
+        p {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+    </h:outputStylesheet>
+    <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
+    <script type="text/javascript" src="http://ansaralhojat.com:8080/software/jwplayer-7.2.2/jwplayer.js"></script>
+</h:head>
+
+<h:body dir="RTL">
+    <f:view locale="#{i18nL10nHelper.locale}">
+        <h:graphicImage value="/resource/image/ansaralhojat.jpg" alt="هیئت انصار الحجه" styleClass="img-responsive" />
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid" style="background-color: #73B9D7;">
+                <div class="navbar-header navbar-right">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand navbar-right" href="http://ansaralhojat.com/" target="_blank">هیئت انصار الحجه</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a href="usefulLinks.xhtml">لینکستان</a></li>
+
+                        <li><a href="think.xhtml">شبهات</a></li>
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">کوتاه اما جالب<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="abstract.xhtml">خلاصه سخنرانی ها</a></li>
+                                <li><a href="fun.xhtml">مقالات</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">پرسش و پاسخ<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="question.xhtml">طرح سوال</a></li>
+                                <li><a href="resolve.xhtml">مشاهده پرسش و پاسخ</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="meeting.xhtml">گالری تصاویر</a></li>
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">دانلود<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="download.xhtml">سخنرانی</a></li>
+                                <li><a href="clip.xhtml">کلیپ</a></li>
+                                <li><a href="maddahi.xhtml">مداحی و مولودی</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="index.xhtml">صفحه اصلی</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-left" style="color: #1a1a1a">
+                        <li><a href="#"><span style="color: orange;" id="clock"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                    <ui:insert name="mainPanel" />
+                </div>
+                <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+                    <p:panel header="حدیث زندگی" >
+                        <p dir="rtl" style="text-align: center;"><span style="color:#008000;">امام باقر علیه السلام: اِنَّ اَعجَلَ الخَيرِ ثَوابا صِلَةُ الرَّحِمِ؛</span></p>
+
+                        <p dir="rtl" style="text-align: center;"><span style="color:#008000;">امام باقر علیه اسلام:</span> ثواب صله رحم سريعتر از هر كار خيرى به صاحبش مى رسد.</p>
+
+                        <p dir="rtl" style="text-align: center;"><span style="color:#0000FF;">منبع:</span> كافى(ط-الاسلامیه) ج2، ص152</p>
+                    </p:panel>
+                    <br />
+                    <p:panel header="آخرین فایل های به روز شده" >
+                        <h:form>
+                            <p dir="rtl" style="text-align: center;"><strong><span style="color:#008000;">سخنرانی:</span></strong><h:commandLink action="download" value=" 28 مرداد" /></p>
+                            <p dir="rtl" style="text-align: center;"><span style="color:#008000;"><strong>کلیپ:&zwnj;</strong></span><h:commandLink action="clip" value="عظمت حسینی" /></p>
+                            <p dir="rtl" style="text-align: center;"><span style="color:#008000;"><strong>عکس:&zwnj;</strong></span><h:commandLink action="meeting" value="1 خرداد" /></p>
+                        </h:form>
+                    </p:panel>
+                    <br />
+                    <p:panel header="کانال رسمی تلگرام هیئت" >
+                        <a href="https://telegram.me/ansaralhojat" target="_blank"><h:graphicImage value="http://www.trutower.com/wp-content/uploads/2015/01/Telegram-logo-620x412.jpg" styleClass="img-responsive" style="max-width: 90%; display: block; margin-left: auto; margin-right: auto;" /></a>
+                    </p:panel>
+                    <br />
+                    <p:panel header="کانال ما در آپارات" >
+                        <a href="http://www.aparat.com/ansaralhojat" target="_blank"><h:graphicImage value="http://www.aparat.com/public/public/images/logo/aparat_logo_color_1000.png" styleClass="img-responsive" style="max-width: 59%; display: block; margin-left: auto; margin-right: auto;" /></a>
+                    </p:panel>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <h:outputScript>
+            $.noConflict();
+        </h:outputScript>
+        <h:outputScript>
+            function blink(selector){
+                $(selector).fadeOut('slow', function(){
+                    $(this).fadeIn('slow', function(){
+                        blink(this);
+                    });
+                });
+            }
+            $(document).ready(function(){
+                blink('blink');
+            });
+        </h:outputScript>
+    </f:view>
+    <div style="text-align: center; margin: 5px auto;">
+        <!-- PersianStat -->
+        <!-- URL: http://ansaralhojat.com/ -->
+        <script language='javascript' type='text/javascript' src='http://www.persianstat.com/service/stat.js'></script>
+        <script language='javascript' type='text/javascript'>
+            persianstat(10263555, 0);
+        </script>
+        <!-- /PersianStat -->
+    </div>
+    <script language='javascript' type='text/javascript'>
+        function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            document.getElementById('clock').innerHTML =
+                    h + ":" + m + ":" + s;
+            var t = setTimeout(startTime, 500);
+        }
+        startTime();
+    </script>
+</h:body>
+</html>

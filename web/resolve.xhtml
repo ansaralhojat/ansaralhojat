@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template_9_3.xhtml">
+    <ui:define name="pageTitle">
+        <h:outputText value="سایت سوال-سؤال و جواب-سؤال و جواب دینی-اسلام-سئوال-جواب سوال-مشاوره رایگان | هیئت انصار الحجه | متوسلین به حضرت زهرا | استادحیدری زارع" />
+    </ui:define>
+    <ui:define name="description">
+        <meta name="description" content="سوال و جواب در زمینه های مذهبی و روانشناسی و ..." />
+    </ui:define>
+
+    <ui:define name="mainPanel">
+        <h:form id="form">
+            <p:growl id="growl" showDetail="true">
+                <p:effect type="pulsate" event="bounce" delay="500" />
+            </p:growl>
+            <p:dataScroller value="#{questionWebBean.questionList}" var="question" chunkSize="6">
+                <p:column headerText="مشاهده پرسش و پاسخ">
+                    <p:tabView dir="rtl" effectDuration="bounce">
+                        <p:tab title="سؤال">
+                            <p><h:outputText value="#{question.question}" escape="false" /></p>
+                        </p:tab>
+                        <p:tab title="جواب">
+                            <p><h:outputText value="#{question.resolve.resolve}" escape="false" /></p>
+                        </p:tab>
+                    </p:tabView>
+                </p:column>
+            </p:dataScroller>
+        </h:form>
+    </ui:define>
+</ui:composition>
+
+</html>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template.xhtml">
+    <ui:define name="pageTitle">
+        <h:outputText value="دانلود مداحی" />
+    </ui:define>
+    <ui:define name="description">
+        <meta name="description" content="دانلود مداحی های هیئت انصار الحجه" />
+    </ui:define>
+
+    <ui:define name="mainPanel">
+
+        <h:form>
+            <p:dialog modal="true" widgetVar="statusDialog" header="لطفا صبر کنید" draggable="false" closable="false" resizable="false">
+                <h:graphicImage value="/resource/image/ajax-loader.gif" />
+            </p:dialog>
+            <p:dataGrid var="maddahi" value="#{maddahiWebBean.maddahis}" columns="3" layout="grid"
+                        rows="5" paginator="true" id="clips"
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="6,12,16">
+
+            <f:facet name="header">مداحی</f:facet>
+
+                <p:panel header="#{maddahi.maddahiType.title}" style="text-align:center">
+                    <p>#{maddahi.maddahiType.title}</p>
+                    <p>#{maddahi.roze.title}</p>
+                    <p>#{maddahi.maddah.title}</p>
+                    <p>#{maddahi.decorum.title}</p>
+                    <p>#{maddahi.farsiDate}</p>
+
+                    <p:commandButton value="دانلود با کیفیت پایین" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
+                        <p:fileDownload value="#{maddahiWebBean.getFile(maddahiWebBean.getLowQuality(maddahi).path)}" />
+                    </p:commandButton>
+                    <p:commandButton value="دانلود با کیفیت بالا" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
+                        <p:fileDownload value="#{maddahiWebBean.getFile(maddahiWebBean.getHighQuality(maddahi).path)}" />
+                    </p:commandButton>
+                </p:panel>
+
+            </p:dataGrid>
+
+            <script type="text/javascript">
+                function start() {
+                    PF('statusDialog').show();
+                }
+
+                function stop() {
+                    PF('statusDialog').hide();
+                }
+            </script>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

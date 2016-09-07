@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template_9_3.xhtml">
+    <ui:define name="pageTitle">
+        <h:outputText value="#{funWebBean.selectedFun == null ? 'مقاله-رایگان-فارسی-جالب-مذهبی-مقالات' : funWebBean.selectedFun.funSubject} | هیئت انصار الحجه | متوسلین به حضرت زهرا | استاد حیدری زارع " />
+    </ui:define>
+    <ui:define name="description">
+        <meta name="description" content="#{funWebBean.selectedFun == null ? 'مقاله-رایگان-فارسی-جالب-مذهبی-مقالات': funWebBean.selectedFun.introFun}" />
+    </ui:define>
+
+    <ui:define name="mainPanel">
+
+        <h:form>
+
+            <p:panel header="مقالات" rendered="#{funWebBean.selectedFun != null}">
+                <h1 class="header" style="text-align: center;">#{funWebBean.selectedFun.funSubject}</h1>
+                <span><h:outputText value="#{funWebBean.selectedFun.completeFun}" escape="false" /></span>
+                <div style="text-align: center;"><h:commandButton value="بازگشت"  action="#{funWebBean.back}" styleClass="btn btn-success btn-lg" /></div>
+            </p:panel>
+
+            <p:dataTable var="fun" value="#{funWebBean.funs}" rows="5" paginator="true" lazy="true" dir="rtl" rendered="#{funWebBean.selectedFun == null}">
+                <p:column headerText="کوتاه اما جالب">
+                    <h:graphicImage value="#{fun.pictureAddress}" style="max-height: 135px; float: right; margin-left: 15px;" styleClass="img-responsive img-rounded img-thumbnail" />
+                    <span>
+                        <h:outputFormat value="موضوع: " styleClass="subject" />
+                        <h:outputFormat value="#{fun.funSubject}" />
+                    </span>
+                    <br />
+                    <br />
+                    <span><h:outputText value="#{fun.introFun}" escape="false" /></span>
+                    <a href="fun.xhtml?subject=#{fun.funSubject}" style="float: left; color: #11800a;"><span>مشاهده مطلب</span></a>
+                </p:column>
+            </p:dataTable>
+
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

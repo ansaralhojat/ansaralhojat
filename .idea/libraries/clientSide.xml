@@ -1,0 +1,57 @@
+<component name="libraryTable">
+  <library name="clientSide">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/antlr-2.7.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/dom4j-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/geronimo-jta_1.1_spec-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate-commons-annotations-5.0.0.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate-core-5.0.1.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate-entitymanager-5.0.1.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate-jpa-2.1-api-1.0.0.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jandex-1.2.2.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javassist-3.18.1-GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.faces-2.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.servlet-api-3.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jboss-logging-3.3.0.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jstl-1.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/primefaces-5.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ejb-api-3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-core-impl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-core.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-environment-common.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-probe-core.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-se-core.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-se.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-servlet-core.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-servlet.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-spi.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/cdi-api-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-api-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-core-impl-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-core-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-environment-common-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-se-core-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-se-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-servlet-core-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-servlet-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-spi-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/primefaces-5.2-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi-api-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-api-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-core-impl-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-core-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-environment-common-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-se-core-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-se-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-servlet-core-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-servlet-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld-spi-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template_9_3.xhtml">
+    <ui:define name="pageTitle">
+        <h:outputText value="هیئت انصار الحجه | متوسلین به حضرت زهرا | استاد حیدری زارع" />
+    </ui:define>
+    <ui:define name="description">
+        <meta name="description" content="سایت هیئت انصار الحجه: زمان بندی دقیق جلسات-سخنرانی ها به همراه خلاصه آنها-گالری تصاویر-سوال خود را مطرح کنید و جواب آن را از استاد حیدری زارع دریافت نمایید-شبهات" />
+    </ui:define>t
+
+    <ui:define name="mainPanel">
+        <h:form>
+            <p:dialog modal="true" widgetVar="statusDialog" header="لطفا صبر کنید" draggable="false" closable="false" resizable="false">
+                <h:graphicImage value="/resource/image/ajax-loader.gif" />
+            </p:dialog>
+            <p:tabView dir="rtl">
+             <p:tab title="آخرین جلسه">
+                 <img alt="" dir="rtl" src="http://cdn.bloomnation.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/0/20140701073829_file_53b30e35679dc_44.jpeg" class="img-responsive" style="float: right; margin-left: 8px; margin-bottom: 8px; max-height: 313px;" />
+                 <p dir="rtl"><strong><span style="color:#008000;">بسم الله الرحمن الرحیم</span></strong></p>
+
+                 <p dir="rtl">رسول الله (ص) به امیرالمومنین (ع) فرمودند : ((لا تشرب الخمر لانّه مسكر.))</p>
+
+                 <p dir="rtl">یکی از چیز هایی که در آخرالزمان حلال شمرده می شود نوشیدن شراب است.</p>
+
+                 <p dir="rtl">عقل نشانه ی برتری انسان بر سایر موجودات است که با نوشیدن مسکر از بین می رود.</p>
+
+                 <p dir="rtl">شیطان توانست با دو چیز روزگار جامعه بشریت را سیاه کند :موسیقی و مسکرات.</p>
+
+                 <p dir="rtl">کسانی که برای نوشیدن شراب دلیل علمی می آورند اعاذ باللله خدا را فاقد شعور حساب کرده اند.</p>
+
+                 <p dir="rtl">امام کاظم (ع) فرمودند : ((شارب الخمر کافر.))</p>
+
+                 <p dir="rtl">امام رضا (ع) فرمودند : ((خداوند شراب را به خاطر فسادهایی که در آن وجود دارد حرام کرده است.))</p>
+
+                 <br />
+
+                 <h:commandLink action="lastMeeting" onclick="PF('statusDialog').show();" value="ادامه مطلب"  style="float: left; color: #11800a; font-weight: bold;"/>
+                 <br />
+            </p:tab>
+            </p:tabView>
+            <h:outputText value="" />
+            <p:tabView dir="rtl">
+                <p:tab title="جلسه بعدی" >
+                    <div class="row" dir="rtl">
+                        <div class="col-lg-6">
+                            <p dir="rtl" style="text-align: center;"><span style="color:#264580;"><strong>اطلاعات بیشتر:</strong></span></p>
+                            <br  />
+
+                            <p style="text-align:center">مجلس زنانه #{indexWebBean.address.family? 'دارد': 'ندارد'}</p>
+                            <p style="text-align:center">پارکینگ  #{indexWebBean.address.parking? 'دارد': 'ندارد'}</p>
+                            <p dir="rtl" style="text-align: center;"><span style="color:#6666ff;"><blink>&laquo;همراه با جلسه نورانی قرآن&raquo;</blink></span></p>
+                        </div>
+                        <div class="col-lg-6">
+                            <h1 class="header" dir="rtl" style="text-align: center;">هیئت انصار الحجه</h1>
+                            <h2 class="header" dir="rtl" style="text-align: center;">متوسلین به حضرت زهرا سلام الله علیها</h2>
+                            <h:outputText value="#{indexWebBean.address.addressInfo}" escape="false" />
+                        </div>
+                    </div>
+                </p:tab>
+                <!--<p:tab title="زمان بندی دقیق">
+                    <h:panelGrid columns="3" style="margin-left: auto; margin-right: auto;">
+                        <h:graphicImage value="http://etc.usf.edu/clipart/34100/34135/nclock-09-01_34135_lg.gif" styleClass="img-responsive " style="max-width: 110px;" />
+                        <h:graphicImage value="http://etc.usf.edu/clipart/34100/34184/nclock-09-50_34184_mth.gif" styleClass="img-responsive" style="max-width: 110px; margin-right: 21px;" />
+                        <h:outputText value="جلسه قرآن" style="margin-right: 21px;" />
+                    </h:panelGrid>
+r                    <br />
+                    <h:panelGrid columns="3" style="margin-left: auto; margin-right: auto;">
+                        <h:graphicImage value="http://etc.usf.edu/clipart/34100/34194/nclock-10-00_34194_mth.gif" styleClass="img-responsive" style="max-width: 110px;" />
+                        <h:graphicImage value="http://etc.usf.edu/clipart/34200/34234/nclock-10-40_34234_md.gif" styleClass="img-responsive" style="max-width: 110px; margin-right: 21px;" />
+                        <h:outputText value="سخنرانی" style="margin-right: 21px;" />
+                    </h:panelGrid>
+                    <br />
+                    <h:panelGrid columns="3" style="margin-left: auto; margin-right: auto;">
+                        <h:graphicImage value="http://etc.usf.edu/clipart/34200/34234/nclock-10-40_34234_md.gif" styleClass="img-responsive" style="max-width: 110px;" />
+                        <h:graphicImage value="http://etc.usf.edu/clipart/34200/34269/nclock-11-15_34269_lg.gif" styleClass="img-responsive" style="max-width: 110px; margin-right: 21px;" />
+                        <h:outputText value="مداحی" style="margin-right: 21px;" />
+                    </h:panelGrid>
+                    <br />
+                    <p style="text-align: center;">موفق باشید</p>
+                    <br />
+                </p:tab>-->
+            </p:tabView>
+        </h:form>
+        <br />
+
+
+        <h:form>
+            <p:dataTable var="fun" value="#{indexWebBean.funs}" rows="5" dir="rtl">
+                <p:column headerText="آخرین مطالب">
+                    <h:graphicImage value="#{fun.pictureAddress}" style="max-height: 135px; float: right; margin-left: 15px;" styleClass="img-responsive img-rounded img-thumbnail" />
+                    <span>
+                        <h:outputFormat value="موضوع: " styleClass="subject" />
+                        <h:outputFormat value="#{fun.funSubject}" />
+                    </span>
+                    <br />
+                    <br />
+                    <span><h:outputText value="#{fun.introFun}" escape="false" /></span>
+                    <a href="fun.xhtml?subject=#{fun.funSubject}" style="float: left; color: #11800a;"><span>مشاهده مطلب</span></a>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+
+    </ui:define>
+    <h:outputScript>
+        $(function(){
+            $('.carousel').carousel({
+                interval: 2000
+            });
+        });
+    </h:outputScript>
+</ui:composition>
+
+</html>

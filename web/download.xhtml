@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template.xhtml">
+    <ui:define name="pageTitle">
+        <h:outputText value="دانلود سخنرانی مذهبی | هیئت انصار الحجه | متوسلین به حضرت زهرا | استاد حیدری زارع" />
+    </ui:define>
+    <ui:define name="description">
+        <meta name="description" content="دانلود سخنرانی مذهبی-خلاصه سخنرانی-متن خلاصه سخنرانی-با قبلیت جستجو" />
+    </ui:define>
+
+    <ui:define name="mainPanel">
+
+        <h:form id="form">
+            <p:dialog modal="true" widgetVar="statusDialog" header="لطفا صبر کنید" draggable="false" closable="false" resizable="false">
+                <h:graphicImage value="/resource/image/ajax-loader.gif" />
+            </p:dialog>
+
+            <p:fieldset legend="جستجو" toggleable="true" collapsed="false" toggleSpeed="800">
+                <div style="text-align: center;">
+                    <h:outputLabel for="subject" value="موضوع سخنرانی: " />
+                    <p:inputText id="subject" value="#{downloadWebBean.subject}" />
+                    <br />
+                    <br />
+
+                    <h:outputLabel for="lecturer" value="سخنران:  " />
+                    <p:selectOneMenu id="lecturer" value="#{downloadWebBean.lecturer}">
+                        <f:selectItem itemLabel="همه سخنران ها" itemValue="-1" noSelectionOption="true" />
+                        <f:selectItems value="#{baseInfoHelper.lecturerSelectItemValues}" />
+                    </p:selectOneMenu>
+                    <br />
+
+                    <h:outputLabel for="decorum" value="مناسبت: " />
+                    <p:selectOneMenu id="decorum" value="#{downloadWebBean.decorum}">
+                        <f:selectItem itemLabel="همه مناسبت ها" itemValue="-1" noSelectionOption="true" />
+                        <f:selectItems value="#{baseInfoHelper.decorumSelectItemValues}" />
+                    </p:selectOneMenu>
+                    <br />
+
+                    <p:commandButton value="جستجو" action="#{downloadWebBean.search}" update="dataTable"
+                                     onclick="PF('statusDialog').show();" ajax="true" oncomplete="PF('statusDialog').hide();"/>
+                    <p:commandButton value="پاک کردن فیلتر ها" actionListener="#{downloadWebBean.clearSearchFields}" action="#{downloadWebBean.search}" update="form"
+                                     onclick="PF('statusDialog').show();" ajax="true" oncomplete="PF('statusDialog').hide();"/>
+                </div>
+            </p:fieldset>
+            <br />
+
+            <p:dataTable var="lecture" value="#{downloadWebBean.lectures}" reflow="true" rows="5" paginator="true" dir="rtl" id="dataTable">
+                <p:column headerText="تصویر سخنران">
+                    <h:graphicImage value="#{lecture.picturePath}" style="margin: 0 auto;" styleClass="img-responsive" width="194" height="259"/>
+                </p:column>
+
+                <p:column headerText="مشخصات سخنرانی">
+                    <div style="text-align: center;">
+                        <h:outputText value="نام سخنران: " styleClass="subject" />
+                        <span><h:outputText value="#{lecture.lecturer.title}" /></span>
+                        <br />
+
+                        <h:outputText value="عنوان اصلی: " styleClass="subject" />
+                        <span><h:outputText value="#{lecture.masterSubject}" /></span>
+                        <br />
+
+                        <h:outputText value="عنوان فرعی: " styleClass="subject" />
+                        <span><h:outputText value="#{lecture.slaveSubject}" rendered="#{lecture.slaveSubject != null and lecture.slaveSubject.length() > 0}" /></span>
+                        <span><h:outputText value="ندارد" rendered="#{lecture.slaveSubject == null or lecture.slaveSubject.length() == 0}" /></span>
+                        <br />
+
+                        <h:outputText value="سخنرانی" styleClass="subject" />
+                        <span><h:outputText value="#{lecture.slaveEpisode}" /></span>
+                        <h:outputText value=" از " styleClass="subject" />
+                        <span><h:outputText value="#{lecture.masterEpisode}" /></span>
+                        <br />
+                        <h:outputText value="مناسبت: " styleClass="subject" />
+                        <span><h:outputText value="#{lecture.decorum.title}" /></span>
+                    </div>
+                </p:column>
+
+                <p:column headerText="خلاصه سخنرانی">
+                    <div style="text-align: center;">
+                        <h:panelGroup rendered="#{downloadWebBean.getAbstractFile(lecture) != null}">
+                            <h:outputText value="مدت زمان به دقیقه: " styleClass="subject"/>
+                            <h:outputText value="#{downloadWebBean.getAbstractFile(lecture).duration}" />
+
+                            <br />
+
+                            <h:outputText value="حجم به مگا بایت: " styleClass="subject" />
+                            <h:outputText value="#{downloadWebBean.getAbstractFile(lecture).size}" />
+
+                            <p></p>
+
+                            <p:button value="دانلود فایل صوتی" ajax="false" href="#{downloadWebBean.getAbstractFile(lecture).path}" icon="ui-icon-arrowthick-1-s" />
+                        </h:panelGroup>
+
+                        <p></p>
+                        <p:commandButton value="مشاهده متن خلاصه سخنرانی" onclick="PF('abstract#{lecture.id}').show();" type="button" />
+                    </div>
+
+                    <p:dialog header="خلاصه سخنرانی" widgetVar="abstract#{lecture.id}" showEffect="bounce" hideEffect="explode" modal="true" resizable="false" draggable="false">
+                        <p:scrollPanel mode="native" style="width:400px;height:580px">
+                            <h:outputText value="#{downloadWebBean.getAbstractText(lecture)}" escape="false" />
+                        </p:scrollPanel>
+                    </p:dialog>
+                </p:column>
+
+                <p:column headerText="سخنرانی کامل"  >
+                    <div style="text-align: center;">
+                        <h:panelGroup rendered="#{downloadWebBean.getCompleteFile(lecture) != null}">
+                            <h:outputText value="مدت زمان به دقیقه: " styleClass="subject"/>
+                            <h:outputText value="#{downloadWebBean.getCompleteFile(lecture).duration}" />
+
+                            <p></p>
+
+                            <p:button value="دانلود با کیفیت پایین با حجم #{downloadWebBean.getCompleteFile(lecture).size} مگا بایت" ajax="false"
+                                      href="#{downloadWebBean.getCompleteFile(lecture).path}" icon="ui-icon-arrowthick-1-s" />
+
+                            <p></p>
+
+                            <p:button value="دانلود با کیفیت متوسط با حجم  #{downloadWebBean.getCompleteFileMD(lecture).size} مگا بایت" ajax="false"
+                                      href="#{downloadWebBean.getCompleteFileMD(lecture).path}" icon="ui-icon-arrowthick-1-s" rendered="false" />
+
+                            <p></p>
+
+                            <p:button value="دانلود با کیفیت بالا با حجم  #{downloadWebBean.getCompleteFileHD(lecture).size} مگا بایت" ajax="false"
+                                      href="#{downloadWebBean.getCompleteFileHD(lecture).path}" icon="ui-icon-arrowthick-1-s"
+                                        rendered="#{downloadWebBean.getCompleteFileHD(lecture) != null}"/>
+
+                            <script type="text/javascript">
+                                function start() {
+                                    PF('statusDialog').show();
+                                }
+
+                                function stop() {
+                                    PF('statusDialog').hide();
+                                }
+                            </script>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{downloadWebBean.getCompleteFile(lecture) == null}">
+                            <p>موجود نمی باشد</p>
+                        </h:panelGroup>
+                    </div>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

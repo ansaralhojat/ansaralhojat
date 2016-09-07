@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template_9_3.xhtml">
+    <ui:define name="pageTitle">
+        <h:outputText value="آخرین جلسه-جلسه مذهبی | هیئت انصار الحجه | متوسلین به حضرت زهرا‌|‌استاد حیدری زارع" />
+    </ui:define>
+    <ui:define name="description">
+        <meta name="description" content="متن خلاصه سخنرانی به همراه فایل های صوتی آخرین جلسه هیئت انصار الحجه" />
+    </ui:define>
+
+    <ui:define name="mainPanel">
+        <p:panel header="آخرین جلسه هیئت" >
+            <h:form>
+                <h:graphicImage value="http://cdn.bloomnation.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/0/20140701073829_file_53b30e35679dc_44.jpeg"
+                                styleClass="hidden-md hidden-sm hidden-xs" style="display: block; margin-left: auto; margin-right: auto; max-height: 313px;" />
+                <p><h:outputText value="#{downloadWebBean.getAnyObjectOfStream(lastMeetingWebBean.lastLecture.text).text}" escape="false" /></p>
+                <br />
+                <p:button value="دانلود خلاصه سخنرانی" ajax="false" href="#{downloadWebBean.getAbstractFile(lastMeetingWebBean.lastLecture).path}"
+                          icon="ui-icon-arrowthick-1-s" rendered="false" />
+                <p:button value="دانلود سخنرانی کامل با کیفیت پایین" ajax="false" href="#{downloadWebBean.getCompleteFile(lastMeetingWebBean.lastLecture).path}"
+                          icon="ui-icon-arrowthick-1-s" />
+                <p:button value="دانلود سخنرانی کامل با کیفیت بالا" ajax="false" href="#{downloadWebBean.getCompleteFileHD(lastMeetingWebBean.lastLecture).path}"
+                          icon="ui-icon-arrowthick-1-s" rendered="true" />
+            </h:form>
+        </p:panel>
+        <script type="text/javascript">
+            function start() {
+                PF('statusDialog').show();
+            }
+
+            function stop() {
+                PF('statusDialog').hide();
+            }
+        </script>
+    </ui:define>
+</ui:composition>
+</html>
