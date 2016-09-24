@@ -10,7 +10,8 @@
         TAVALODE_HAZRAE_ALIAKBAR(12, "ولادت حضرت علی اکبر"),
         NIME_SHABAN(13, "نیمه شعبان"),
         SHABE_GHADR(14, "شب های قدر"),
-        SHAHADAT_EMEM_SADEGH(15, "شهادت امام صادق");
+        SHAHADAT_EMEM_SADEGH(15, "شهادت امام صادق"),
+        EDYE_GHADIR(16, "عید غدیر");
 
     private int id;
     private String title;
