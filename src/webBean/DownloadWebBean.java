@@ -74,17 +74,13 @@ public class DownloadWebBean implements Serializable {
         return null;
     }
 
-    public  Text getAnyObjectOfStream(Set<Text> texts) {
-        return texts.stream().findAny().get();
-    }
-
     public void search() {
         lectures = lectureService.findByCondition(subject, lecturer, decorum);
     }
 
     @PostConstruct
     public void init() {
-        lectures = lectureService.findAllOrderById(Lecture.class, false, "file", "text");
+        lectures = lectureService.findAllOrderById(Lecture.class, false);
         clearSearchFields();
    }
 

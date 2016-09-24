@@ -28,7 +28,7 @@
 
                 <p:panel header="#{clip.name}" style="text-align:center">
                     <h:graphicImage value="#{clip.picturePath}" style="margin: 2px auto;" styleClass="img-responsive" />
-                    <p:button value="کلیک کنید" ajax="false" href="#{clipWebBean.getAnyObjectOfStream(clip.file).path}" icon="ui-icon-arrowthick-1-s" />
+                    <p:button value="کلیک کنید" ajax="false" href="#{clip.file.get(0).path}" icon="ui-icon-arrowthick-1-s" />
                 </p:panel>
 
             </p:dataGrid>

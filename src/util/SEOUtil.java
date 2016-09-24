@@ -79,7 +79,7 @@ public class SEOUtil {
             funSubjectList.forEach(funSubject -> addLoc.accept("http://ansaralhojat.com/fun.xhtml?subject=" + funSubject));
 
             addLoc.accept("http://ansaralhojat.com/abstract.xhtml");
-            List<Text> textList = textService.findAllOrderById(Text.class, true, "lecture");
+            List<Text> textList = textService.findAllOrderById(Text.class, true);
             final List<Long> textIdList = textList.stream().map(Text::getId).collect(Collectors.toList());
             textIdList.forEach(textId -> addLoc.accept("http://ansaralhojat.com/abstract.xhtml?loadedId=" + textId));
 

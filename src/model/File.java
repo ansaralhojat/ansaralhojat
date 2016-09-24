@@ -23,8 +23,6 @@ public class File extends BaseModel {
     @Convert(converter = FormatConverter.class)
     private FileFormat fileFormat;
 
-    private Date date;
-
     private Float size;
 
     private Float duration;
@@ -79,14 +77,6 @@ public class File extends BaseModel {
 
     public void setFileFormat(FileFormat fileFormat) {
         this.fileFormat = fileFormat;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public Float getSize() {

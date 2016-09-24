@@ -51,7 +51,7 @@
             </p:fieldset>
             <br />
 
-            <p:dataTable var="lecture" value="#{downloadWebBean.lectures}" reflow="true" rows="5" paginator="true" dir="rtl" id="dataTable">
+            <p:dataTable var="lecture" value="#{downloadWebBean.lectures}" reflow="true" rows="5" paginator="true" dir="rtl" id="dataTable" emptyMessage="سخنرانی با مشخصات مورد نظر پیدا نشد">
                 <p:column headerText="تصویر سخنران">
                     <h:graphicImage value="#{lecture.picturePath}" style="margin: 0 auto;" styleClass="img-responsive" width="194" height="259"/>
                 </p:column>
@@ -78,6 +78,9 @@
                         <br />
                         <h:outputText value="مناسبت: " styleClass="subject" />
                         <span><h:outputText value="#{lecture.decorum.title}" /></span>
+                        <br />
+                        <h:outputText value="تاریخ: " styleClass="subject" />
+                        <span><h:outputText value="#{lecture.date}" /></span>
                     </div>
                 </p:column>
 

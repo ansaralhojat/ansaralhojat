@@ -42,7 +42,7 @@ public class MaddahiWebBean implements Serializable {
 
     @PostConstruct
     public void init() {
-        maddahis = maddahiService.findAllOrderById(Maddahi.class, false, "file");
+        maddahis = maddahiService.findAllOrderById(Maddahi.class, false);
    }
 
     public List<Maddahi> getMaddahis() {

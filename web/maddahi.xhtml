@@ -35,12 +35,8 @@
                     <p>#{maddahi.decorum.title}</p>
                     <p>#{maddahi.farsiDate}</p>
 
-                    <p:commandButton value="دانلود با کیفیت پایین" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
-                        <p:fileDownload value="#{maddahiWebBean.getFile(maddahiWebBean.getLowQuality(maddahi).path)}" />
-                    </p:commandButton>
-                    <p:commandButton value="دانلود با کیفیت بالا" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
-                        <p:fileDownload value="#{maddahiWebBean.getFile(maddahiWebBean.getHighQuality(maddahi).path)}" />
-                    </p:commandButton>
+                    <p:button value="دانلود با کیفیت پایین" ajax="false" href="#{maddahiWebBean.getLowQuality(maddahi).path}" icon="ui-icon-arrowthick-1-s" />
+                    <p:button value="دانلود با کیفیت بالا" ajax="false" href="#{maddahiWebBean.getHighQuality(maddahi).path}" icon="ui-icon-arrowthick-1-s" />
                 </p:panel>
 
             </p:dataGrid>

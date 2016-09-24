@@ -24,12 +24,8 @@ public class ClipWebBean implements Serializable {
 
     @PostConstruct
     public void init() {
-            clips = clipService.findAllOrderById(model.Clip.class, false, "file");
+            clips = clipService.findAllOrderById(model.Clip.class, false);
    }
-
-    public File getAnyObjectOfStream(Set<File> files) {
-        return files.stream().findAny().get();
-    }
 
     public List<model.Clip> getClips() {
         return clips;

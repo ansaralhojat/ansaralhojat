@@ -23,7 +23,7 @@ public class Text extends BaseModel {
     @Convert(converter = FileUsageConverter.class)
     private FileUsage fileUsage;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "lecture_id")
     Lecture lecture;
 

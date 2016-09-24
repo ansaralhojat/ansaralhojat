@@ -8,16 +8,17 @@ import baseInfo.converter.LecturerConverter;
 import baseInfo.converter.RozeConverter;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "TB_LECTURE")
 public class Lecture extends BaseModel {
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "lecture")
-    private Set<File> file;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "lecture")
+    private List<File> file;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "lecture")
-    private Set<Text> text;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "lecture")
+    private List<Text> text;
 
     @Enumerated
     @Convert(converter = LecturerConverter.class)
@@ -42,19 +43,21 @@ public class Lecture extends BaseModel {
     @Convert(converter = RozeConverter.class)
     private Roze roze;
 
-    public Set<File> getFile() {
+    private String date;
+
+    public List<File> getFile() {
         return file;
     }
 
-    public void setFile(Set<File> file) {
+    public void setFile(List<File> file) {
         this.file = file;
     }
 
-    public Set<Text> getText() {
+    public List<Text> getText() {
         return text;
     }
 
-    public void setText(Set<Text> text) {
+    public void setText(List<Text> text) {
         this.text = text;
     }
 
@@ -120,5 +123,13 @@ public class Lecture extends BaseModel {
 
     public void setRoze(Roze roze) {
         this.roze = roze;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

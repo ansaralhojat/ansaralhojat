@@ -14,10 +14,6 @@ public interface BaseService<T extends BaseModel> {
 
     T findById(Class<T> clazz, Long id);
 
-    T findById(Class<T> clazz, Long id, String... fetches);
-
     List<T> findAllOrderById(Class<T> clazz, boolean asc);
-
-    List<T> findAllOrderById(Class<T> clazz, boolean asc, String... fetches);
 
 }

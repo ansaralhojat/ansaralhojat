@@ -41,9 +41,9 @@ public class AbstractWebBean implements Serializable {
     @PostConstruct
     public void init() {
         if (loadedId!=null)
-            selectedText = textService.findById(Text.class, loadedId, "lecture");
+            selectedText = textService.findById(Text.class, loadedId);
         else
-            texts = textService.findAllOrderById(Text.class, false, "lecture");
+            texts = textService.findAllOrderById(Text.class, false);
    }
 
     public String back() {

@@ -10,13 +10,14 @@ import baseInfo.converter.MaddahiTypeConverter;
 import baseInfo.converter.RozeConverter;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "TB_MADDAHI")
 public class Maddahi extends BaseModel {
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "maddahi")
-    private Set<File> file;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "maddahi")
+    private List<File> file;
 
     @Enumerated
     @Convert(converter = MaddahConverter.class)
@@ -36,11 +37,11 @@ public class Maddahi extends BaseModel {
 
     private String farsiDate;
 
-    public Set<File> getFile() {
+    public List<File> getFile() {
         return file;
     }
 
-    public void setFile(Set<File> file) {
+    public void setFile(List<File> file) {
         this.file = file;
     }
 

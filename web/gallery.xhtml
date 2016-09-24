@@ -19,7 +19,7 @@
             <h1 class="header" style="text-align: center;">هیئت انصار الحجه</h1>
             <h2 class="header" style="text-align: center;">متوسلین به حضرت زهرا سلام الله علیها</h2>
             <ui:repeat value="#{meetingWebBean.selectedMeeting.meetingPictures}" var="meetingPicture">
-                <h:graphicImage value="#{meetingPicture.pictureAddress}" alt="#{meetingPicture.alt}" styleClass="img-responsive" style="display: block; margin-left: auto; margin-right: auto;" />
+                    <h:graphicImage value="#{meetingPicture.pictureAddress}" alt="#{meetingPicture.alt}" styleClass="img-responsive" style="display: block; margin-left: auto; margin-right: auto;" />
                 <p style="text-align: center;">#{meetingPicture.pictureDescription}</p>
                 <br />
             </ui:repeat>
