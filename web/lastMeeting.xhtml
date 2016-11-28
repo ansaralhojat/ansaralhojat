@@ -17,14 +17,14 @@
     <ui:define name="mainPanel">
         <p:panel header="آخرین جلسه هیئت" >
             <h:form>
-                <h:graphicImage value="http://cdn.bloomnation.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/0/20140701073829_file_53b30e35679dc_44.jpeg"
+                <h:graphicImage value="http://s5.picofile.com/file/8147217918/reza_tavakolfard_blogfa_1_.png"
                                 styleClass="hidden-md hidden-sm hidden-xs" style="display: block; margin-left: auto; margin-right: auto; max-height: 313px;" />
                 <p><h:outputText value="#{lastMeetingWebBean.lastLecture.text.get(0).text}" escape="false" /></p>
                 <br />
                 <p:button value="دانلود خلاصه سخنرانی" ajax="false" href="#{downloadWebBean.getAbstractFile(lastMeetingWebBean.lastLecture).path}"
                           icon="ui-icon-arrowthick-1-s" rendered="false" />
                 <p:button value="دانلود سخنرانی کامل با کیفیت پایین" ajax="false" href="#{downloadWebBean.getCompleteFile(lastMeetingWebBean.lastLecture).path}"
-                          icon="ui-icon-arrowthick-1-s" />
+                          icon="ui-icon-arrowthick-1-s" rendered="true" />
                 <p:button value="دانلود سخنرانی کامل با کیفیت بالا" ajax="false" href="#{downloadWebBean.getCompleteFileHD(lastMeetingWebBean.lastLecture).path}"
                           icon="ui-icon-arrowthick-1-s" rendered="true" />
             </h:form>

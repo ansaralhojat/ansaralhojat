@@ -2,9 +2,9 @@ package baseInfo;
 
 import javax.faces.model.SelectItem;
 
-public enum MaddahiType {
+public enum MaddahiCategory {
 
-    ROZE(0, "روضه"), ZAMINEH(1, "زمینه"), SOROOD(2, "سرود"), POEM(3, "شعر");
+    ROZE(0, "مداحی"), MOLOODI(1, "مولودی");
 
     private int id;
     private String title;
@@ -25,13 +25,13 @@ public enum MaddahiType {
         this.title = title;
     }
 
-    MaddahiType(int id, String title) {
+    MaddahiCategory(int id, String title) {
         this.id = id;
         this.title = title;
     }
 
-    public static MaddahiType findById(int value) {
-        for (MaddahiType maddahiType : MaddahiType.values()) {
+    public static MaddahiCategory findById(int value) {
+        for (MaddahiCategory maddahiType : MaddahiCategory.values()) {
             if (maddahiType.getId() == value)
                 return maddahiType;
         }
@@ -39,9 +39,9 @@ public enum MaddahiType {
     }
 
     public static SelectItem[] getSelectItemValues() {
-        SelectItem[] items = new SelectItem[MaddahiType.values().length];
+        SelectItem[] items = new SelectItem[MaddahiCategory.values().length];
         int i = 0;
-        for(MaddahiType e: MaddahiType.values()) {
+        for(MaddahiCategory e: MaddahiCategory.values()) {
             items[i++] = new SelectItem(e.getId(), e.getTitle());
         }
         return items;

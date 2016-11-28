@@ -1,17 +1,10 @@
 package model;
 
-import baseInfo.Decorum;
-import baseInfo.Maddah;
-import baseInfo.MaddahiType;
-import baseInfo.Roze;
-import baseInfo.converter.DecorumConverter;
-import baseInfo.converter.MaddahConverter;
-import baseInfo.converter.MaddahiTypeConverter;
-import baseInfo.converter.RozeConverter;
+import baseInfo.*;
+import baseInfo.converter.*;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "TB_MADDAHI")
@@ -24,18 +17,24 @@ public class Maddahi extends BaseModel {
     private Maddah maddah;
 
     @Enumerated
+    @Convert(converter = MaddahiCategoryConverter.class)
+    private MaddahiCategory category;
+
+    @Enumerated
     @Convert(converter = MaddahiTypeConverter.class)
-    private MaddahiType maddahiType;
+    private MaddahiType type;
 
     @Enumerated
     @Convert(converter = DecorumConverter.class)
     private Decorum decorum;
 
     @Enumerated
-    @Convert(converter = RozeConverter.class)
-    private Roze roze;
+    @Convert(converter = HugeConverter.class)
+    private Huge huge;
 
-    private String farsiDate;
+    private String date;
+
+    private String picturePath;
 
     public List<File> getFile() {
         return file;
@@ -53,12 +52,20 @@ public class Maddahi extends BaseModel {
         this.maddah = maddah;
     }
 
-    public MaddahiType getMaddahiType() {
-        return maddahiType;
+    public MaddahiCategory getCategory() {
+        return category;
     }
 
-    public void setMaddahiType(MaddahiType maddahiType) {
-        this.maddahiType = maddahiType;
+    public void setCategory(MaddahiCategory category) {
+        this.category = category;
+    }
+
+    public MaddahiType getType() {
+        return type;
+    }
+
+    public void setType(MaddahiType type) {
+        this.type = type;
     }
 
     public Decorum getDecorum() {
@@ -69,19 +76,27 @@ public class Maddahi extends BaseModel {
         this.decorum = decorum;
     }
 
-    public Roze getRoze() {
-        return roze;
+    public Huge getHuge() {
+        return huge;
     }
 
-    public void setRoze(Roze roze) {
-        this.roze = roze;
+    public void setHuge(Huge huge) {
+        this.huge = huge;
     }
 
-    public String getFarsiDate() {
-        return farsiDate;
+    public String getDate() {
+        return date;
     }
 
-    public void setFarsiDate(String farsiDate) {
-        this.farsiDate = farsiDate;
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getPicturePath() {
+        return picturePath;
+    }
+
+    public void setPicturePath(String picturePath) {
+        this.picturePath = picturePath;
     }
 }

@@ -28,12 +28,11 @@
 
             <f:facet name="header">مداحی</f:facet>
 
-                <p:panel header="#{maddahi.maddahiType.title}" style="text-align:center">
-                    <p>#{maddahi.maddahiType.title}</p>
-                    <p>#{maddahi.roze.title}</p>
-                    <p>#{maddahi.maddah.title}</p>
-                    <p>#{maddahi.decorum.title}</p>
-                    <p>#{maddahi.farsiDate}</p>
+                <p:panel header="#{maddahi.type.title}" style="text-align:center">
+                    <h:graphicImage value="#{maddahi.picturePath}" style="margin: 2px auto;" styleClass="img-responsive" />
+                    <p style="text-align: center;" class="subject">#{maddahi.huge.title}</p>
+                    <p>#{maddahi.maddah.title}، #{maddahi.type.title}</p>
+                    <p>#{maddahi.decorum.title}، #{maddahi.date}</p>
 
                     <p:button value="دانلود با کیفیت پایین" ajax="false" href="#{maddahiWebBean.getLowQuality(maddahi).path}" icon="ui-icon-arrowthick-1-s" />
                     <p:button value="دانلود با کیفیت بالا" ajax="false" href="#{maddahiWebBean.getHighQuality(maddahi).path}" icon="ui-icon-arrowthick-1-s" />
