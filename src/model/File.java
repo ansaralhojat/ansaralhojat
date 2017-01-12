@@ -35,15 +35,15 @@ public class File extends BaseModel {
     @Convert(converter = QualityConverter.class)
     private Quality quality;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "lecture_id")
     Lecture lecture;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "maddahi_id")
     private Maddahi maddahi;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "clip_id")
     private Clip clip;
 

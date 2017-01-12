@@ -60,6 +60,7 @@ public class AbstractWebBean implements Serializable {
     }
 
     public List<Text> getTexts() {
+        System.out.println();
         return texts.stream().filter(text -> Optional.ofNullable(text.getAbstractText()).isPresent()).collect(Collectors.toList());
     }
 

@@ -16,30 +16,26 @@
 
     <ui:define name="mainPanel">
         <h:form>
-            <p:dialog modal="true" widgetVar="statusDialog" header="لطفا صبر کنید" draggable="false" closable="false" resizable="false">
+            <p:dialog modal="true" widgetVar="statusDialog" header="#{message.please_wait}" draggable="false" closable="false" resizable="false">
                 <h:graphicImage value="/resource/image/ajax-loader.gif" />
             </p:dialog>
-            <p:tabView dir="rtl">
-             <p:tab title="آخرین سخنرانی">
-                 <img alt="" dir="rtl" src="http://s1.picofile.com/file/7992476341/_babol2011_blogfa_com_14.gif" class="img-responsive" style="float: right; margin-left: 8px; margin-bottom: 8px; max-height: 313px;" />
-                 <p dir="rtl">رسول الله صلی الله علیه و آله و سلم به امیرالمؤمنین علیه السلام فرمودند : ((حق را بپذیر، خواه آورنده ی حق کودک باشد یا بزرگ.))</p>
+            <p:tabView dir="#{message.dir}">
+             <p:tab title="#{message.last_lecture}">
+                 <p dir="rtl">امام صادق علیه&zwnj;السلام از قول جدشان، پیامبر اکرم صلوات الله علیه و آله و سلم فرمودند :</p>
 
-                 <p dir="rtl">علت این همه سختی های قبل از ظهور، پخته و ساخته شدن است.</p>
+                 <p dir="rtl">چهار خصلت درهر کسی باشد، اگر از فرق سر تا به نوک انگشت، غرق گناه باشد، خداوند گناهانش را به حسنات تبدیل می&zwnj;کند:</p>
 
-                 <p dir="rtl">امیرالمؤمنین علی علیه السلام می فرمایند: ((برترین مردم نزد خدا ، کسی است که عمل به حق در نزدش محبوب باشد هرچند آسیبی به او وارد شود و از باطل دست بکشد هرچند منفعتی برایش داشته باشد.))</p>
+                 <p dir="rtl" style="text-align: center;"><br />
+                     &laquo;الصِدق، الشُکر، حسن الخلق، الحیا&raquo;</p>
 
-                 <p dir="rtl">حق را بشناسید و آن را قبول کنید .<br />
-                     خودتان را برای امام زمان عجل الله تعالی فرجه الشریف آماده کنید ، و عجله کنید وگرنه وقت کم می آورید .</p>
-                 <br />
-
-                 <h:commandLink action="lastMeeting" onclick="PF('statusDialog').show();" value="ادامه مطلب"  style="float: left; color: #11800a; font-weight: bold;"/>
+                 <h:commandLink action="lastMeeting" onclick="PF('statusDialog').show();" value="#{message.read_more}"  style="float: #{message.direction_reverse}; color: #11800a; font-weight: bold;"/>
                  <br />
             </p:tab>
             </p:tabView>
             <h:outputText value="" />
-            <p:tabView dir="rtl">
-                <p:tab title="جلسه بعدی" >
-                    <div class="row" dir="rtl">
+            <p:tabView dir="#{message.dir}">
+                <p:tab title="#{message.next_meeting}" >
+                    <div class="row" dir="#{message.dir}">
                         <div class="col-lg-6">
                             <p dir="rtl" style="text-align: center;"><span style="color:#264580;"><strong>اطلاعات بیشتر:</strong></span></p>
                             <br  />
@@ -55,7 +51,7 @@
                         </div>
                     </div>
                 </p:tab>
-                <p:tab title="جزئیات زمان بندی">
+                <p:tab title="#{message.scheduling}">
                     <h:panelGrid columns="3" style="margin-left: auto; margin-right: auto;">
                         <h:graphicImage value="http://www.clipartkid.com/images/411/00-clip-art-at-clker-com-vector-clip-art-online-royalty-free-y1keXp-clipart.png" styleClass="img-responsive " style="max-width: 110px;" />
                         <h:graphicImage value="http://www.clipartkid.com/images/225/clock-clip-art-at-clker-com-vector-clip-art-online-royalty-free-IiNenP-clipart.png" styleClass="img-responsive" style="max-width: 110px; margin-right: 21px;" />
@@ -77,29 +73,29 @@
                     <p style="text-align: center;">موفق باشید</p>
                     <br />
                 </p:tab>
-                <p:tab title="جزئیات آدرس">
+                <!--<p:tab title="جزئیات آدرس">
                     <p style="text-align: center;">
                         <a href="https://www.google.com/maps/place/%D8%AF%D8%A8%DB%8C%D8%B1%D8%B3%D8%AA%D8%A7%D9%86+%D8%A2%DB%8C%D8%AA+%D8%A7%D9%84%D9%84%D9%87+%D8%B3%D8%B9%DB%8C%D8%AF%DB%8C%E2%80%AD/@35.6757784,51.3931983,18.5z/data=!4m13!1m7!3m6!1s0x3f8e01b68406db4b:0x2846e4f3eee14367!2sTehran+Province,+Tehran,+District+11,+Qazvin+Square!3b1!8m2!3d35.6753923!4d51.3941957!3m4!1s0x0:0x7309eaca0405635f!8m2!3d35.6763986!4d51.393644"
                            target="_blank">کلیک کنید</a>
                     </p>
-                </p:tab>
+                </p:tab>-->
             </p:tabView>
         </h:form>
         <br />
 
 
         <h:form>
-            <p:dataTable var="fun" value="#{indexWebBean.funs}" rows="5" dir="rtl">
-                <p:column headerText="آخرین مطالب">
+            <p:dataTable var="fun" value="#{indexWebBean.funs}" rows="5" dir="#{message.dir}">
+                <p:column headerText="#{message.last_papers}">
                     <h:graphicImage value="#{fun.pictureAddress}" style="max-height: 135px; float: right; margin-left: 15px;" styleClass="img-responsive img-rounded img-thumbnail" />
                     <span>
-                        <h:outputFormat value="موضوع: " styleClass="subject" />
-                        <h:outputFormat value="#{fun.funSubject}" />
+                        <h:outputFormat value="#{message.subject}: " styleClass="subject" />
+                        <h:outputFormat value="#{fun.hasEnglish ? fun.funSubject_en : fun.funSubject}" />
                     </span>
                     <br />
                     <br />
-                    <span><h:outputText value="#{fun.introFun}" escape="false" /></span>
-                    <a href="fun.xhtml?subject=#{fun.funSubject}" style="float: left; color: #11800a;"><span>مشاهده مطلب</span></a>
+                    <span><h:outputText value="#{fun.hasEnglish ? fun.introFun_en : fun.introFun}" escape="false" /></span>
+                    <a href="fun.xhtml?subject=#{fun.funSubject}" style="float: #{message.direction_reverse}; color: #11800a;"><span>#{message.read_more}</span></a>
                 </p:column>
             </p:dataTable>
         </h:form>

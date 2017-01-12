@@ -6,6 +6,8 @@ import baseInfo.Roze;
 import baseInfo.converter.DecorumConverter;
 import baseInfo.converter.LecturerConverter;
 import baseInfo.converter.RozeConverter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,9 +16,11 @@ import java.util.Set;
 @Entity
 @Table(name = "TB_LECTURE")
 public class Lecture extends BaseModel {
+    @Fetch(FetchMode.SELECT)
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "lecture")
     private List<File> file;
 
+    @Fetch(FetchMode.SELECT)
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "lecture")
     private List<Text> text;
 

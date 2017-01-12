@@ -48,58 +48,78 @@
             text-align: justify;
             text-justify: inter-word;
         }
+
+        @media only screen and (max-width: 320px) {
+            body {
+                font-size: 3em;
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            body {
+                font-size: 3em;
+            }
+        }
     </h:outputStylesheet>
     <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
 </h:head>
 <h:body dir="RTL">
     <f:view locale="#{i18nL10nHelper.locale}">
-        <h:graphicImage value="/resource/image/banner.jpg" alt="هیئت انصار الحجه" styleClass="img-responsive" />
+        <h:graphicImage value="/resource/image/ansaralhojat.jpg" alt="هیئت انصار الحجه" styleClass="img-responsive" />
         <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
+            <div class="container-fluid" style="background-color: #3E9FC8;">
                 <div class="navbar-header navbar-right">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand navbar-right" href="http://ansaralhojat.com/" target="_blank">هیئت انصار الحجه</a>
+                    <a class="navbar-brand navbar-right" href="http://ansaralhojat.com/" target="_blank">#{message.ansaralhojat_meeting}</a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav #{message.navbar_direction}">
 
-                        <li><a href="usefulLinks.xhtml">لینکستان</a></li>
+                        <li><a href="usefulLinks.xhtml">#{message.links_house}</a></li>
 
-                        <li><a href="think.xhtml">شبهات</a></li>
+                        <li><a href="think.xhtml">#{message.doubt}</a></li>
 
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">کوتاه اما جالب<span class="caret"></span></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">#{message.short_interesting}<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="abstract.xhtml">خلاصه سخنرانی ها</a></li>
-                                <li><a href="fun.xhtml">مقالات</a></li>
+                                <li><a href="abstract.xhtml">#{message.lecture_abstract}</a></li>
+                                <li><a href="fun.xhtml">#{message.paper}</a></li>
                             </ul>
                         </li>
 
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">پرسش و پاسخ<span class="caret"></span></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">#{message.question_and_answer}<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="question.xhtml">طرح سوال</a></li>
-                                <li><a href="resolve.xhtml">مشاهده پرسش و پاسخ</a></li>
+                                <li><a href="question.xhtml">#{message.making_question}</a></li>
+                                <li><a href="resolve.xhtml">#{message.question_and_answer_archive}</a></li>
                             </ul>
                         </li>
 
-                        <li><a href="meeting.xhtml">گالری تصاویر</a></li>
+                        <li><a href="meeting.xhtml">#{message.picture_gallery}</a></li>
 
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">دانلود<span class="caret"></span></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">#{message.download}<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="download.xhtml">سخنرانی</a></li>
-                                <li><a href="clip.xhtml">کلیپ</a></li>
-                                <li><a href="maddahi.xhtml">مداحی و مولودی</a></li>
+                                <li><a href="download.xhtml">#{message.lecture}</a></li>
+                                <li><a href="clip.xhtml">#{message.clip}</a></li>
+                                <!--<li><a href="maddahi.xhtml">مداحی و مولودی</a></li>-->
                             </ul>
                         </li>
-                        <li><a href="index.xhtml">صفحه اصلی</a></li>
+                        <li><a href="index.xhtml">#{message.index}</a></li>
+
+                        <!--<li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">#{message.choosing_language}<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="index.xhtml?language=fa">فارسی</a></li>
+                                <li><a href="index.xhtml?language=en">english</a></li>
+                            </ul>
+                        </li>-->
                     </ul>
-                    <ul class="nav navbar-nav navbar-left">
+                    <ul class="nav navbar-nav #{message.navbar_reverse_direction}" style="color: #1a1a1a">
                         <li><a href="#"><span style="color: orange;" id="clock"></span></a></li>
                     </ul>
                 </div>

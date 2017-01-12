@@ -11,7 +11,9 @@
         NIME_SHABAN(13, "نیمه شعبان"),
         SHABE_GHADR(14, "شب های قدر"),
         SHAHADAT_EMEM_SADEGH(15, "شهادت امام صادق"),
-        EDYE_GHADIR(16, "عید غدیر");
+        EDYE_GHADIR(16, "عید غدیر"),
+        SHAHADAT_EMAM_HASAN(17, "وفات رسول الله،‌ شهادت امام حسن"),
+        SHAHADAT_EMAMA_REZA(18, "شهادت امام رضا");
 
     private int id;
     private String title;

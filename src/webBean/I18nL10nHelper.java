@@ -1,25 +1,44 @@
 package webBean;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.util.Locale;
+import java.util.Map;
 
 @ManagedBean
 @SessionScoped
 public class I18nL10nHelper implements Serializable {
+    public static final String LANGUAGE = "language";
 
-    private Locale locale = null;
+    @ManagedProperty(value = "#{param.language}")
+    private String language;
 
     public Locale getLocale() {
-        if (locale==null)
-            locale = new Locale("fa");
-        return locale;
+        Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+        if (!sessionMap.containsKey(LANGUAGE)) {
+            Locale farsiLocal = new Locale("fa");
+            sessionMap.put(LANGUAGE, farsiLocal);
+            return farsiLocal;
+        }
+
+        if (getLanguage() != null) {
+            Locale locale = new Locale(language);
+            sessionMap.put(LANGUAGE, locale);
+            return locale;
+        }
+
+
+        return (Locale) sessionMap.get(LANGUAGE);
     }
 
-    public void setLocale(Locale locale) {
-        this.locale = locale;
+    public String getLanguage() {
+        return language;
     }
 
+    public void setLanguage(String language) {
+        this.language = language;
+    }
 }

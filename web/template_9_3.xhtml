@@ -7,48 +7,60 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-    <title><ui:insert name="pageTitle" /></title>
-    <ui:insert name="description" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
+    <title><ui:insert name="pageTitle"/></title>
+    <ui:insert name="description"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
     <h:outputStylesheet>
         @font-face {
-            font-family:'BYekan';/*تعریف یک نام برای فونت*/
-            src:url('resource/font/Yekan.eot');/*اکسپلورر 9 به بعد*/
-            src:local('bYekan'),/*بررسی نصب بودن فونت در سیستم کاربر*/
-            local('b Yekan'),/*برای برخی از مرورگرها مانند سافاری*/
-            url('resource/font/Yekan.eot?#iefix') format('embedded-opentype'),/*هک برای اکسپلورر 8 و ماقبل*/
-            url('resource/font/Yekan.woff') format('woff'),/*مرورگر های جدید*/
-            url('resource/font/Yekan.ttf') format('truetype'),/*تمام مرورگرها به جزء اکسپلورر*/
-            url('resource/font/Yekan.svg#BYekan') format('svg');/*نسخه های قدیمی سیستم عامل iOS*/
-            font-style:normal;
-            font-weight:normal;
+            font-family: 'BYekan';/*تعریف یک نام برای فونت*/
+            src: url('resource/font/Yekan.eot');/*اکسپلورر 9 به بعد*/
+            src: local('bYekan'), /*بررسی نصب بودن فونت در سیستم کاربر*/ local('b Yekan'), /*برای برخی از مرورگرها مانند سافاری*/ url('resource/font/Yekan.eot?#iefix') format('embedded-opentype'), /*هک برای اکسپلورر 8 و ماقبل*/ url('resource/font/Yekan.woff') format('woff'), /*مرورگر های جدید*/ url('resource/font/Yekan.ttf') format('truetype'), /*تمام مرورگرها به جزء اکسپلورر*/ url('resource/font/Yekan.svg#BYekan') format('svg');/*نسخه های قدیمی سیستم عامل iOS*/
+            font-style: normal;
+            font-weight: normal;
         }
+
         p, span, a {
-            font-family:BYekan, Tahoma, Geneva, sans-serif;
-            font-size:16px;
+            font-family: BYekan, Tahoma, Geneva, sans-serif;
+            font-size: 16px;
             line-height: 200%;
         }
+
         .header {
-            font-family:BYekan, Tahoma, Geneva, sans-serif;
-            font-size:18px;
+            font-family: BYekan, Tahoma, Geneva, sans-serif;
+            font-size: 18px;
             text-align: center;
             color: #11800a;
             font-weight: bold;
             line-height: 200%;
         }
+
         .subject {
-            font-family:BYekan, Tahoma, Geneva, sans-serif;
+            font-family: BYekan, Tahoma, Geneva, sans-serif;
             color: #278CBA;
             font-weight: bold;
-            font-size:16px;
+            font-size: 16px;
             line-height: 200%;
         }
+
         p {
             text-align: justify;
             text-justify: inter-word;
         }
+
+        @media only screen and (max-width: 320px) {
+            body {
+                font-size: 3em;
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            body {
+                font-size: 3em;
+            }
+        }
+
     </h:outputStylesheet>
     <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
     <script type="text/javascript" src="http://ansaralhojat.com:8080/software/jwplayer-7.2.2/jwplayer.js"></script>
@@ -56,53 +68,65 @@
 
 <h:body dir="RTL">
     <f:view locale="#{i18nL10nHelper.locale}">
-        <h:graphicImage value="/resource/image/banner.jpg" alt="هیئت انصار الحجه" styleClass="img-responsive" />
+        <h:graphicImage value="/resource/image/ansaralhojat.jpg" alt="هیئت انصار الحجه" styleClass="img-responsive"/>
         <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
+            <div class="container-fluid" style="background-color: #3E9FC8;">
                 <div class="navbar-header navbar-right">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand navbar-right" href="http://ansaralhojat.com/" target="_blank">هیئت انصار الحجه</a>
+                    <a class="navbar-brand navbar-right" href="http://ansaralhojat.com/"
+                       target="_blank">#{message.ansaralhojat_meeting}</a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav #{message.navbar_direction}">
 
-                        <li><a href="usefulLinks.xhtml">لینکستان</a></li>
+                        <li><a href="usefulLinks.xhtml">#{message.links_house}</a></li>
 
-                        <li><a href="think.xhtml">شبهات</a></li>
+                        <li><a href="think.xhtml">#{message.doubt}</a></li>
 
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">کوتاه اما جالب<span class="caret"></span></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">#{message.short_interesting}<span
+                                    class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="abstract.xhtml">خلاصه سخنرانی ها</a></li>
-                                <li><a href="fun.xhtml">مقالات</a></li>
+                                <li><a href="abstract.xhtml">#{message.lecture_abstract}</a></li>
+                                <li><a href="fun.xhtml">#{message.paper}</a></li>
                             </ul>
                         </li>
 
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">پرسش و پاسخ<span class="caret"></span></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">#{message.question_and_answer}
+                                <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="question.xhtml">طرح سوال</a></li>
-                                <li><a href="resolve.xhtml">مشاهده پرسش و پاسخ</a></li>
+                                <li><a href="question.xhtml">#{message.making_question}</a></li>
+                                <li><a href="resolve.xhtml">#{message.question_and_answer_archive}</a></li>
                             </ul>
                         </li>
 
-                        <li><a href="meeting.xhtml">گالری تصاویر</a></li>
+                        <li><a href="meeting.xhtml">#{message.picture_gallery}</a></li>
 
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">دانلود<span class="caret"></span></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">#{message.download}<span
+                                    class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="download.xhtml">سخنرانی</a></li>
-                                <li><a href="clip.xhtml">کلیپ</a></li>
-                                <li><a href="maddahi.xhtml">مداحی و مولودی</a></li>
+                                <li><a href="download.xhtml">#{message.lecture}</a></li>
+                                <li><a href="clip.xhtml">#{message.clip}</a></li>
+                                <!--<li><a href="maddahi.xhtml">مداحی و مولودی</a></li>-->
                             </ul>
                         </li>
-                        <li><a href="index.xhtml">صفحه اصلی</a></li>
+                        <li><a href="index.xhtml">#{message.index}</a></li>
+
+                        <!--<li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">#{message.choosing_language}<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="index.xhtml?language=fa">فارسی</a></li>
+                                <li><a href="index.xhtml?language=en">english</a></li>
+                            </ul>
+                        </li>-->
                     </ul>
-                    <ul class="nav navbar-nav navbar-left" style="color: #1a1a1a">
+                    <ul class="nav navbar-nav #{message.navbar_reverse_direction}" style="color: #1a1a1a">
                         <li><a href="#"><span style="color: orange;" id="clock"></span></a></li>
                     </ul>
                 </div>
@@ -112,52 +136,69 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-                    <ui:insert name="mainPanel" />
+                    <ui:insert name="mainPanel"/>
                 </div>
                 <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
-                    <p:panel header="حدیث زندگی" >
-                        <div class="ONF" dir="rtl"><span style="color:#008000;"><strong>امام حسین علیه السلام:</strong></span></div>
+                    <p:panel header="#{message.life_hadith}">
+                        <div class="ONF" dir="rtl"><span style="color:#008000;"><strong>امام حسین علیه السلام:</strong></span>
+                        </div>
 
-                        <p dir="rtl"><span style="color:#008000;"><strong>إنَّ النّاسَ عَبيدُ الدُّنيا، وَ الدّينُ لَعقٌ عَلى ألسِنَتِهِم يَحوطونَهُ ما دَرَّت مَعايِشُهُم، فَإِذا مُحِّصوا بِالبَلاءِ قَلَّ الدَّيّانونَ</strong>؛</span></p>
+                        <p dir="rtl"><span
+                                style="color:#008000;"><strong>إنَّ النّاسَ عَبيدُ الدُّنيا، وَ الدّينُ لَعقٌ عَلى ألسِنَتِهِم يَحوطونَهُ ما دَرَّت مَعايِشُهُم، فَإِذا مُحِّصوا بِالبَلاءِ قَلَّ الدَّيّانونَ</strong>؛</span>
+                        </p>
 
-                        <p dir="rtl">مردم، بنده دنيايند و به ظاهر، دم از دين مى&rlm; زنند و تا زمانى كه زندگی&rlm;شان تأمين شود، از آن دفاع می&zwnj;كنند؛ امّا چون در بوته آزمايش قرار گيرند، ديندارانْ اندك&rlm; اند.<br />
-                            <br />
+                        <p dir="rtl">مردم، بنده دنيايند و به ظاهر، دم از دين مى&rlm; زنند و تا زمانى كه زندگی&rlm;شان تأمين شود، از آن دفاع می&zwnj;كنند؛ امّا چون در بوته آزمايش قرار گيرند، ديندارانْ اندك&rlm; اند.<br/>
+                            <br/>
                             تحف العقول، ص245</p>
                     </p:panel>
-                    <br />
-                    <p:panel header="آخرین فایل های به روز شده" >
+                    <br/>
+                    <p:panel header="#{message.last_updated_files}">
                         <h:form>
-                            <p dir="rtl" style="text-align: center;"><strong><span style="color:#008000;">سخنرانی:</span></strong><h:commandLink action="download" value=" 4 آذر" /></p>
-                            <p dir="rtl" style="text-align: center;"><span style="color:#008000;"><strong>کلیپ:&zwnj;</strong></span><h:commandLink action="clip" value=" فراق" /></p>
-                            <p dir="rtl" style="text-align: center;"><span style="color:#008000;"><strong>عکس:&zwnj;</strong></span><h:commandLink action="meeting" value=" ظهر عاشورا" /></p>
+                            <p dir="rtl" style="text-align: center;"><strong><span
+                                    style="color:#008000;">#{message.lecture}: </span></strong><h:commandLink
+                                    action="download" value="16 دی"/></p>
+                            <p dir="rtl" style="text-align: center;"><span
+                                    style="color:#008000;"><strong>#{message.clip}:&zwnj; </strong></span><h:commandLink
+                                    action="clip" value=" فراق"/></p>
+                            <p dir="rtl" style="text-align: center;"><span
+                                    style="color:#008000;"><strong>#{message.picture}: &zwnj;</strong></span><h:commandLink
+                                    action="meeting" value=" ظهر عاشورا"/></p>
                         </h:form>
                     </p:panel>
-                    <br />
-                    <p:panel header="کانال رسمی تلگرام هیئت" >
-                        <a href="https://telegram.me/ansaralhojat" target="_blank"><h:graphicImage value="http://www.trutower.com/wp-content/uploads/2015/01/Telegram-logo-620x412.jpg" styleClass="img-responsive" style="max-width: 90%; display: block; margin-left: auto; margin-right: auto;" /></a>
+                    <br/>
+                    <p:panel header="#{message.our_telegram_channel}">
+                        <a href="https://telegram.me/ansaralhojat" target="_blank"><h:graphicImage
+                                value="http://www.trutower.com/wp-content/uploads/2015/01/Telegram-logo-620x412.jpg"
+                                styleClass="img-responsive"
+                                style="max-width: 90%; display: block; margin-left: auto; margin-right: auto;"/></a>
                     </p:panel>
-                    <br />
-                    <p:panel header="کانال ما در آپارات" >
-                        <a href="http://www.aparat.com/ansaralhojat" target="_blank"><h:graphicImage value="http://www.aparat.com/public/public/images/logo/aparat_logo_color_1000.png" styleClass="img-responsive" style="max-width: 59%; display: block; margin-left: auto; margin-right: auto;" /></a>
+                    <br/>
+                    <p:panel header="#{message.our_aparat_channel}">
+                        <a href="http://www.aparat.com/ansaralhojat" target="_blank"><h:graphicImage
+                                value="http://www.aparat.com/public/public/images/logo/aparat_logo_color_1000.png"
+                                styleClass="img-responsive"
+                                style="max-width: 59%; display: block; margin-left: auto; margin-right: auto;"/></a>
                     </p:panel>
                 </div>
             </div>
         </div>
 
-        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script type="text/javascript"
+                src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
         <h:outputScript>
             $.noConflict();
         </h:outputScript>
         <h:outputScript>
-            function blink(selector){
-                $(selector).fadeOut('slow', function(){
-                    $(this).fadeIn('slow', function(){
+            function blink(selector) {
+                $(selector).fadeOut('slow', function () {
+                    $(this).fadeIn('slow', function () {
                         blink(this);
                     });
                 });
             }
-            $(document).ready(function(){
+
+            $(document).ready(function () {
                 blink('blink');
             });
         </h:outputScript>
@@ -170,18 +211,23 @@
             persianstat(10263555, 0);
         </script>
         <!-- /PersianStat -->
-        <!-- Histats.com  (div with counter) --><div id="histats_counter"></div>
+        <!-- Histats.com  (div with counter) -->
+        <div id="histats_counter"></div>
         <!-- Histats.com  START  (aync)-->
-        <script type="text/javascript">var _Hasync= _Hasync|| [];
+        <script type="text/javascript">var _Hasync = _Hasync || [];
         _Hasync.push(['Histats.startgif', '1,3292472,4,8000,"undefined"']);
         _Hasync.push(['Histats.fasi', '1']);
         _Hasync.push(['Histats.track_hits', '']);
-        (function() {
-            var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+        (function () {
+            var hs = document.createElement('script');
+            hs.type = 'text/javascript';
+            hs.async = true;
             hs.src = ('//s10.histats.com/js15_gif_as.js');
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
         })();</script>
-        <noscript><a href="/" alt="counter easy hit" target="_blank" ><div id="histatsC"><img border="0" src="http://s4is.histats.com/8000.gif?3292472%26103" /></div></a>
+        <noscript><a href="/" alt="counter easy hit" target="_blank">
+            <div id="histatsC"><img border="0" src="http://s4is.histats.com/8000.gif?3292472%26103"/></div>
+        </a>
         </noscript>
         <!-- Histats.com  END  -->
     </div>
@@ -192,7 +238,7 @@
             var m = today.getMinutes();
             var s = today.getSeconds();
             document.getElementById('clock').innerHTML =
-                    h + ":" + m + ":" + s;
+                h + ":" + m + ":" + s;
             var t = setTimeout(startTime, 500);
         }
         startTime();

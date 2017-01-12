@@ -11,16 +11,15 @@ public class Fun extends BaseModel {
 
     private String funSubject;
 
-//    @ManyToMany
-//    @JoinTable(name = "TB_FUN_SUBJECT",
-//        joinColumns = {@JoinColumn(name = "FUN_ID", referencedColumnName = "id")},
-//        inverseJoinColumns = {@JoinColumn(name = "SUBJECT_ID", referencedColumnName = "id")})
-//    private List<Subject> subject;
+    private String funSubject_en;
 
     private String pictureAddress;
 
     @Lob
     private String introFun;
+
+    @Lob
+    private String introFun_en;
 
     @Lob
     private String completeFun;
@@ -42,13 +41,13 @@ public class Fun extends BaseModel {
         this.funSubject = funSubject;
     }
 
-//    public List<Subject> getSubject() {
-//        return subject;
-//    }
-//
-//    public void setSubject(List<Subject> subject) {
-//        this.subject = subject;
-//    }
+    public String getFunSubject_en() {
+        return funSubject_en;
+    }
+
+    public void setFunSubject_en(String funSubject_en) {
+        this.funSubject_en = funSubject_en;
+    }
 
     public String getPictureAddress() {
         return pictureAddress;
@@ -64,6 +63,14 @@ public class Fun extends BaseModel {
 
     public void setIntroFun(String introFun) {
         this.introFun = introFun;
+    }
+
+    public String getIntroFun_en() {
+        return introFun_en;
+    }
+
+    public void setIntroFun_en(String introFun_en) {
+        this.introFun_en = introFun_en;
     }
 
     public String getCompleteFun() {
