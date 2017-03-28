@@ -48,8 +48,8 @@ public class BaseServiceIMPL<T extends BaseModel> implements BaseService<T> {
     @Override
     public List<T> findAllOrderById(Class<T> clazz, boolean asc) {
         StringBuilder queryString = new StringBuilder("select t from ").append(clazz.getSimpleName()).append(" t ");
-        if (i18nL10nHelper.getLocale().getLanguage().equals("en"))
-            queryString.append(" WHERE t.hasEnglish = true");
+//        if (i18nL10nHelper.getLocale().getLanguage().equals("en"))
+//            queryString.append(" WHERE t.hasEnglish = true");
         queryString.append(" order by t.id " + (asc ? "asc" : "desc"));
         Query query = entityManager.createQuery(queryString.toString());
         return query.getResultList();
