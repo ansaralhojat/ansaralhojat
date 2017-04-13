@@ -1,6 +1,5 @@
 package sessionFacadeBean;
 
-import model.Fun;
 import model.Lecture;
 
 import java.util.List;

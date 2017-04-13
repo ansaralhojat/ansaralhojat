@@ -6,11 +6,12 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "TB_RESOLVE")
+@Table(name = "tb_resolve_")
 public class Resolve extends BaseModel {
-
+    @Column(nullable = false)
     private Date date;
-    @Column(length = 1000)
+
+    @Column(length = 1000, nullable = false)
     private String resolve;
 
     public Date getDate() {

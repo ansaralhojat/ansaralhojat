@@ -1,29 +1,27 @@
 package model;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import java.util.List;
-import java.util.Set;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "TB_CLIP")
+@Table(name = "tb_clip_")
 public class Clip extends BaseModel {
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "clip")
-    private List<File> file;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false, name = "mp3_id")
+    private MP3 mp3;
 
+    @Column(nullable = false)
     private String name;
 
-    private String picturePath;
+    @Column(nullable = false)
+    private String pictureAddress;
 
-    public List<File> getFile() {
-        return file;
+    public MP3 getMp3() {
+        return mp3;
     }
 
-    public void setFile(List<File> file) {
-        this.file = file;
+    public void setMp3(MP3 mp3) {
+        this.mp3 = mp3;
     }
 
     public String getName() {
@@ -34,11 +32,11 @@ public class Clip extends BaseModel {
         this.name = name;
     }
 
-    public String getPicturePath() {
-        return picturePath;
+    public String getPictureAddress() {
+        return pictureAddress;
     }
 
-    public void setPicturePath(String picturePath) {
-        this.picturePath = picturePath;
+    public void setPictureAddress(String pictureAddress) {
+        this.pictureAddress = pictureAddress;
     }
 }

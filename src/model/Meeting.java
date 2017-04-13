@@ -2,41 +2,45 @@ package model;
 
 import baseInfo.Decorum;
 import baseInfo.converter.DecorumConverter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name = "TB_MEETING")
+@Table(name = "tb_meeting_")
+@NamedQuery(name = "findAllWithPictureOrderByDateDesc",
+        query = "select distinct m from Meeting m join fetch m.pictures order by m.date desc")
 public class Meeting extends BaseModel {
-    private Date date;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "meeting")
+    @JsonIgnore
+    Set<Picture> pictures;
 
-    private String Subject;
+    @Column(nullable = false)
+    private String date;
 
     @Enumerated
     @Convert(converter = DecorumConverter.class)
     private Decorum decorum;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "meeting")
-    List<MeetingPicture> meetingPictures;
+    private Short count;
 
-    private String allPictureAddress;
+    private String comment;
 
-    public Date getDate() {
+    public Set<Picture> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(Set<Picture> pictures) {
+        this.pictures = pictures;
+    }
+
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
-    }
-
-    public String getSubject() {
-        return Subject;
-    }
-
-    public void setSubject(String subject) {
-        Subject = subject;
     }
 
     public Decorum getDecorum() {
@@ -47,19 +51,19 @@ public class Meeting extends BaseModel {
         this.decorum = decorum;
     }
 
-    public List<MeetingPicture> getMeetingPictures() {
-        return meetingPictures;
+    public Short getCount() {
+        return count;
     }
 
-    public void setMeetingPictures(List<MeetingPicture> meetingPictures) {
-        this.meetingPictures = meetingPictures;
+    public void setCount(Short count) {
+        this.count = count;
     }
 
-    public String getAllPictureAddress() {
-        return allPictureAddress;
+    public String getComment() {
+        return comment;
     }
 
-    public void setAllPictureAddress(String allPictureAddress) {
-        this.allPictureAddress = allPictureAddress;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

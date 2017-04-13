@@ -3,7 +3,7 @@ package baseInfo;
 import javax.faces.model.SelectItem;
 
 public enum Quality {
-    LOW(0, "quality.low"), MEDIUM(1, "quality.medium"), HIGH(2, "quality.high");
+    LOW(0, "کم"), MEDIUM(1, "متوسط"), HIGH(2, "زیاد");
     private int id;
     private String title;
 
@@ -39,7 +39,7 @@ public enum Quality {
     public static SelectItem[] getSelectItemValues() {
         SelectItem[] items = new SelectItem[Quality.values().length];
         int i = 0;
-        for(Quality e: Quality.values()) {
+        for (Quality e : Quality.values()) {
             items[i++] = new SelectItem(e.getId(), e.getTitle());
         }
         return items;

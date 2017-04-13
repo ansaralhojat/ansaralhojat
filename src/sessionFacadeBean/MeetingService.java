@@ -2,8 +2,9 @@ package sessionFacadeBean;
 
 import model.Meeting;
 
+import java.util.List;
+
 public interface MeetingService extends BaseService<Meeting> {
 
-    Meeting findBySubject(String subject);
-
+    List<Meeting> findAllWithPictureOrderByDateDesc();
 }

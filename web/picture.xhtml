@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template_9_3.xhtml">
+    <ui:define name="pageTitle">
+        <h:outputText
+                value="گالری ها-گالری عکس-عکس تصویر | هیئت انصار الحجه | متوسلین به حضرت زهرا | استاد حیدری زارع"/>
+    </ui:define>
+    <ui:define name="description">
+        <meta name="description" content="#{meetingWebBean.selectedMeeting.decorum.title}"/>
+    </ui:define>
+
+    <ui:define name="mainPanel">
+        <p:panel header="گالری عکس">
+            <h1 class="header" style="text-align: center;">هیئت انصار الحجه</h1>
+            <h2 class="header" style="text-align: center;">متوسلین به حضرت زهرا سلام الله علیها</h2>
+            <ui:repeat value="#{meetingWebBean.convertSetToList(meetingWebBean.selectedMeeting.pictures)}"
+                       var="picture">
+                <h:graphicImage value="#{picture.address}" alt="#{picture.alt}"
+                                styleClass="img-responsive"
+                                style="display: block; margin-left: auto; margin-right: auto;"/>
+                <p style="text-align: center;">#{picture.description}</p>
+                <br/>
+            </ui:repeat>
+            <br/>
+        </p:panel>
+    </ui:define>
+</ui:composition>
+
+</html>

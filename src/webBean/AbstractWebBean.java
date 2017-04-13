@@ -11,8 +11,6 @@ import javax.faces.bean.RequestScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @ManagedBean
 @RequestScoped
@@ -25,30 +23,25 @@ public class AbstractWebBean implements Serializable {
 
     private Text selectedText;
 
-    @ManagedProperty(value="#{param.loadedId}")
+    @ManagedProperty(value = "#{param.loadedId}")
     private Long loadedId;
-
-    public String getCompleteSubject(Text text) {
-        final StringBuilder result = new StringBuilder();
-        Optional.ofNullable(text.getLecture()).ifPresent(lecture -> {
-            result.append(lecture.getMasterSubject());
-            Optional.ofNullable(lecture.getSlaveSubject()).ifPresent(s -> result.append("-").append(lecture.getSlaveSubject()));
-        });
-        Optional.ofNullable(text.getSubjectText()).ifPresent(lecture -> result.append(text.getSubjectText()));
-        return result.toString();
-    }
 
     @PostConstruct
     public void init() {
-        if (loadedId!=null)
+        if (loadedId != null)
             selectedText = textService.findById(Text.class, loadedId);
         else
             texts = textService.findAllOrderById(Text.class, false);
-   }
+    }
 
     public String back() {
         selectedText = null;
-        return "fun";
+        return "abstract";
+    }
+
+    public String getCompleteSubject(Text text) {
+        return text.getLecture().getMasterSubject()
+                + (text.getLecture().getSlaveSubject() == null ? "" : " - " + text.getLecture().getSlaveSubject());
     }
 
     public Long getLoadedId() {
@@ -60,8 +53,11 @@ public class AbstractWebBean implements Serializable {
     }
 
     public List<Text> getTexts() {
-        System.out.println();
-        return texts.stream().filter(text -> Optional.ofNullable(text.getAbstractText()).isPresent()).collect(Collectors.toList());
+        return texts;
+    }
+
+    public void setTexts(List<Text> texts) {
+        this.texts = texts;
     }
 
     public Text getSelectedText() {

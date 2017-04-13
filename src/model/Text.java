@@ -1,46 +1,44 @@
 package model;
 
-import baseInfo.FileUsage;
-import baseInfo.converter.FileUsageConverter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.Optional;
+import java.util.Set;
 
 @Entity
-@Table(name = "tb_text")
+@Table(name = "tb_text_")
+@NamedQuery(name = "findLastText",
+        query = "select t from Text t where t.id = (select max(t.id) from Text t)")
 public class Text extends BaseModel {
-    private Date date;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "text")
+    @JsonIgnore
+    private Set<Lecture> lectures;
 
-    @Lob
-    private String text;
+    @Transient
+    @JsonIgnore
+    private Lecture lecture;
 
+    @Column(nullable = false, length = 1001)
     private String abstractText;
 
-    private String subjectText;
+    @Lob
+    @Column(nullable = false)
+    private String text;
 
-    @Enumerated
-    @Convert(converter = FileUsageConverter.class)
-    private FileUsage fileUsage;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "lecture_id")
-    Lecture lecture;
-
-    public Date getDate() {
-        return date;
+    public Set<Lecture> getLectures() {
+        return lectures;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setLectures(Set<Lecture> lectures) {
+        this.lectures = lectures;
     }
 
-    public String getText() {
-        return text;
+    public Lecture getLecture() {
+        return lectures.stream().findAny().get();
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setLecture(Lecture lecture) {
+        this.lecture = lecture;
     }
 
     public String getAbstractText() {
@@ -51,27 +49,11 @@ public class Text extends BaseModel {
         this.abstractText = abstractText;
     }
 
-    public String getSubjectText() {
-        return subjectText;
+    public String getText() {
+        return text;
     }
 
-    public void setSubjectText(String subjectText) {
-        this.subjectText = subjectText;
-    }
-
-    public FileUsage getFileUsage() {
-        return fileUsage;
-    }
-
-    public void setFileUsage(FileUsage fileUsage) {
-        this.fileUsage = fileUsage;
-    }
-
-    public Lecture getLecture() {
-        return lecture;
-    }
-
-    public void setLecture(Lecture lecture) {
-        this.lecture = lecture;
+    public void setText(String text) {
+        this.text = text;
     }
 }

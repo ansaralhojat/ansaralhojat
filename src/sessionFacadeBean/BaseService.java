@@ -2,6 +2,7 @@ package sessionFacadeBean;
 
 import model.BaseModel;
 
+import javax.ejb.Local;
 import java.util.List;
 
 public interface BaseService<T extends BaseModel> {

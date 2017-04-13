@@ -2,18 +2,26 @@ package model;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
-@Table(name = "TB_QUESTION")
-public class Question extends BaseModel{
-
+@Table(name = "tb_question_")
+@NamedQuery(name = "findAllQuestionWithResolveOrderByDateDesc",
+        query = "select q from Question q left join fetch q.resolve where q.resolve is not null order by q.date desc")
+public class Question extends BaseModel {
+    @Column(nullable = false)
     private Date date;
+
     private String subject;
+
+    @Column(nullable = false, length = 1001)
     private String question;
+
     private String mobilePhone;
+
     private String eMail;
-    @OneToOne
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "resolve_id")
     private Resolve resolve;
 
     public Date getDate() {

@@ -1,52 +1,43 @@
 package model;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
 
 @Entity
-@Table(name = "TB_FUN")
+@Table(name = "tb_fun_")
+@NamedQuery(name = "findBySubject", query = "select f from Fun f where f.subject = ?1")
+
 public class Fun extends BaseModel {
-    private Date date;
+    @Column(nullable = false)
+    private String date;
 
-    private String funSubject;
+    @Column(nullable = false)
+    private String subject;
 
-    private String funSubject_en;
-
+    @Column(nullable = false)
     private String pictureAddress;
 
     @Lob
-    private String introFun;
+    @Column(nullable = false)
+    private String introduction;
 
     @Lob
-    private String introFun_en;
+    @Column(nullable = false)
+    private String context;
 
-    @Lob
-    private String completeFun;
-
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
-
     }
 
-    public String getFunSubject() {
-        return funSubject;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setFunSubject(String funSubject) {
-        this.funSubject = funSubject;
-    }
-
-    public String getFunSubject_en() {
-        return funSubject_en;
-    }
-
-    public void setFunSubject_en(String funSubject_en) {
-        this.funSubject_en = funSubject_en;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     public String getPictureAddress() {
@@ -57,27 +48,19 @@ public class Fun extends BaseModel {
         this.pictureAddress = pictureAddress;
     }
 
-    public String getIntroFun() {
-        return introFun;
+    public String getIntroduction() {
+        return introduction;
     }
 
-    public void setIntroFun(String introFun) {
-        this.introFun = introFun;
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
     }
 
-    public String getIntroFun_en() {
-        return introFun_en;
+    public String getContext() {
+        return context;
     }
 
-    public void setIntroFun_en(String introFun_en) {
-        this.introFun_en = introFun_en;
-    }
-
-    public String getCompleteFun() {
-        return completeFun;
-    }
-
-    public void setCompleteFun(String completeFun) {
-        this.completeFun = completeFun;
+    public void setContext(String context) {
+        this.context = context;
     }
 }

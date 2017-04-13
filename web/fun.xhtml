@@ -19,8 +19,8 @@
         <h:form>
 
             <p:panel header="مقالات" rendered="#{funWebBean.selectedFun != null}">
-                <h1 class="header" style="text-align: center;">#{funWebBean.selectedFun.funSubject}</h1>
-                <span><h:outputText value="#{funWebBean.selectedFun.completeFun}" escape="false" /></span>
+                <h1 class="header" style="text-align: center;">#{funWebBean.selectedFun.subject}</h1>
+                <span><h:outputText value="#{funWebBean.selectedFun.context}" escape="false" /></span>
                 <div style="text-align: center;"><h:commandButton value="بازگشت"  action="#{funWebBean.back}" styleClass="btn btn-success btn-lg" /></div>
             </p:panel>
 
@@ -29,12 +29,12 @@
                     <h:graphicImage value="#{fun.pictureAddress}" style="max-height: 135px; float: right; margin-left: 15px;" styleClass="img-responsive img-rounded img-thumbnail" />
                     <span>
                         <h:outputFormat value="موضوع: " styleClass="subject" />
-                        <h:outputFormat value="#{fun.funSubject}" />
+                        <h:outputFormat value="#{fun.subject}" />
                     </span>
                     <br />
                     <br />
-                    <span><h:outputText value="#{fun.introFun}" escape="false" /></span>
-                    <a href="fun.xhtml?subject=#{fun.funSubject}" style="float: left; color: #11800a;"><span>مشاهده مطلب</span></a>
+                    <span><h:outputText value="#{fun.introduction}" escape="false" /></span>
+                    <a href="fun.xhtml?subject=#{fun.subject}" style="float: left; color: #11800a;"><span>مشاهده مطلب</span></a>
                 </p:column>
             </p:dataTable>
 

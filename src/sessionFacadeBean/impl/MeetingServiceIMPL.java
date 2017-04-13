@@ -4,16 +4,19 @@ import model.Meeting;
 import sessionFacadeBean.MeetingService;
 
 import javax.ejb.Stateless;
-import javax.persistence.Query;
+import javax.persistence.criteria.JoinType;
+import javax.persistence.criteria.Root;
+import java.util.List;
 
 @Stateless
-public class MeetingServiceIMPL extends BaseServiceIMPL<Meeting> implements MeetingService{
-
+public class MeetingServiceIMPL extends BaseServiceIMPL<Meeting> implements MeetingService {
+    @Override
+    public List<Meeting> findAllWithPictureOrderByDateDesc() {
+        return entityManager.createNamedQuery("findAllWithPictureOrderByDateDesc").getResultList();
+    }
 
     @Override
-    public Meeting findBySubject(String subject) {
-        final String queryString = "select m from Meeting m where m.Subject = :subject";
-        Query query = entityManager.createQuery(queryString).setParameter("subject", subject);
-        return (Meeting) query.getSingleResult();
+    protected void addJoinFetch(Root<Meeting> from) {
+        from.fetch("pictures", JoinType.LEFT);
     }
 }

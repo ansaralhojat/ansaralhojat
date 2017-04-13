@@ -23,16 +23,7 @@
             </p:dialog>
             <p:tabView dir="#{message.dir}">
                 <p:tab title="#{message.last_lecture}">
-                    <p dir="rtl">قرآن کریم در آیه شریفه 109 سوره بقره می فرماید : وَدَّ كَثِيرٌ مِنْ أَهْلِ الْكِتَابِ لَوْ يَرُدُّونَكُمْ مِنْ بَعْدِ إِيمَانِكُمْ كُفَّارًا.</p>
-
-                    <p dir="rtl">بسیاری از اهل کتاب می خواهند که بعد ایمان تان، شما را کافر کنند. این آیه نشانگر تبلیغات دشمن است.</p>
-
-                    <p dir="rtl"><br />
-                        دو عامل باعث رخ دادن افعال اختیاری در انسان می&zwnj;شود عبارتند از :</p>
-
-                    <p dir="rtl">علم ودانش یا همان باور و یقین،<br />
-                        میل و گرایش.</p>
-
+                    <h:outputText value="#{indexWebBean.index.lastAbstractText}" escape="false"/>
                     <h:commandLink action="lastMeeting" onclick="PF('statusDialog').show();"
                                    value="#{message.read_more}"
                                    style="float: #{message.direction_reverse}; color: #11800a; font-weight: bold;"/>
@@ -48,8 +39,8 @@
                                     style="color:#264580;"><strong>اطلاعات بیشتر:</strong></span></p>
                             <br/>
 
-                            <p style="text-align:center">مجلس زنانه #{indexWebBean.address.family? 'منعقد می باشد': 'منعقد نمی باشد'}</p>
-                            <p style="text-align:center">پارکینگ  #{indexWebBean.address.parking? 'دارد': 'ندارد'}</p>
+                            <p style="text-align:center">مجلس زنانه #{indexWebBean.index.address.family? 'منعقد می باشد': 'منعقد نمی باشد'}</p>
+                            <p style="text-align:center">پارکینگ  #{indexWebBean.index.address.parking? 'دارد': 'ندارد'}</p>
                             <p dir="rtl" style="text-align: center;"><span style="color:#6666ff;"><blink>&laquo;همراه با جلسه نورانی قرآن&raquo;</blink></span>
                             </p>
                         </div>
@@ -57,49 +48,51 @@
                             <h1 class="header" dir="rtl" style="text-align: center;">هیئت انصار الحجه</h1>
                             <h2 class="header" dir="rtl"
                                 style="text-align: center;">متوسلین به حضرت زهرا سلام الله علیها</h2>
-                            <h:outputText value="#{indexWebBean.address.addressInfo}" escape="false"/>
+                            <h:outputText value="#{indexWebBean.index.address.timeInfo}" escape="false"/>
+                            <br />
+                            <h:outputText value="#{indexWebBean.index.address.addressInfo}" escape="false"/>
                         </div>
                     </div>
                 </p:tab>
                 <!--<p:tab title="#{message.scheduling}">-->
-                    <!--<h:panelGrid columns="3" style="margin-left: auto; margin-right: auto;">
-                        <h:graphicImage
-                                value="http://www.clipartkid.com/images/411/00-clip-art-at-clker-com-vector-clip-art-online-royalty-free-y1keXp-clipart.png"
-                                styleClass="img-responsive " style="max-width: 110px;"/>
-                        <h:graphicImage
-                                value="http://www.clipartkid.com/images/225/clock-clip-art-at-clker-com-vector-clip-art-online-royalty-free-IiNenP-clipart.png"
-                                styleClass="img-responsive" style="max-width: 110px; margin-right: 21px;"/>
-                        <h:outputText value="جلسه قرآن" style="margin-right: 21px;"/>
-                    </h:panelGrid>
-                    <br/>
-                    <h:panelGrid columns="3" style="margin-left: auto; margin-right: auto;">
-                        <h:graphicImage
-                                value="http://www.clipartkid.com/images/225/clock-clip-art-at-clker-com-vector-clip-art-online-royalty-free-IiNenP-clipart.png"
-                                styleClass="img-responsive" style="max-width: 110px;"/>
-                        <h:graphicImage value="http://www.clker.com/cliparts/0/6/7/c/K/M/10-o-clock-md.png"
-                                        styleClass="img-responsive" style="max-width: 110px; margin-right: 21px;"/>
-                        <h:outputText value="سخنرانی" style="margin-right: 21px;"/>
-                    </h:panelGrid>
-                    <br/>
-                    <h:panelGrid columns="3" style="margin-left: auto; margin-right: auto;">
-                        <h:graphicImage value="http://www.clker.com/cliparts/0/6/7/c/K/M/10-o-clock-md.png"
-                                        styleClass="img-responsive" style="max-width: 110px;"/>
-                        <h:graphicImage value="http://www.clker.com/cliparts/e/n/y/I/H/k/11-o-clock-hi.png"
-                                        styleClass="img-responsive" style="max-width: 110px; margin-right: 21px;"/>
-                        <h:outputText value="مداحی و سینه زنی" style="margin-right: 21px;"/>
-                    </h:panelGrid>
-                    <br/>
-                    <p style="text-align: center;">موفق باشید</p>
-                    <br/>-->
-                    <!--<p dir="rtl" style="text-align: center;"><span style="color:#008000;"><strong>جلسه قرآن:</strong></span> از ساعت 20 تا 20:40<br />-->
-                        <!--<strong><span style="color:#008000;">سخنرانی:</span></strong> از ساعت 45 :20 تا 21:30<br />-->
-                        <!--<strong><span style="color:#008000;">مداحی:</span></strong> از ساعت 30: 21 تا 22</p>-->
+                <!--<h:panelGrid columns="3" style="margin-left: auto; margin-right: auto;">
+                    <h:graphicImage
+                            value="http://www.clipartkid.com/images/411/00-clip-art-at-clker-com-vector-clip-art-online-royalty-free-y1keXp-clipart.png"
+                            styleClass="img-responsive " style="max-width: 110px;"/>
+                    <h:graphicImage
+                            value="http://www.clipartkid.com/images/225/clock-clip-art-at-clker-com-vector-clip-art-online-royalty-free-IiNenP-clipart.png"
+                            styleClass="img-responsive" style="max-width: 110px; margin-right: 21px;"/>
+                    <h:outputText value="جلسه قرآن" style="margin-right: 21px;"/>
+                </h:panelGrid>
+                <br/>
+                <h:panelGrid columns="3" style="margin-left: auto; margin-right: auto;">
+                    <h:graphicImage
+                            value="http://www.clipartkid.com/images/225/clock-clip-art-at-clker-com-vector-clip-art-online-royalty-free-IiNenP-clipart.png"
+                            styleClass="img-responsive" style="max-width: 110px;"/>
+                    <h:graphicImage value="http://www.clker.com/cliparts/0/6/7/c/K/M/10-o-clock-md.png"
+                                    styleClass="img-responsive" style="max-width: 110px; margin-right: 21px;"/>
+                    <h:outputText value="سخنرانی" style="margin-right: 21px;"/>
+                </h:panelGrid>
+                <br/>
+                <h:panelGrid columns="3" style="margin-left: auto; margin-right: auto;">
+                    <h:graphicImage value="http://www.clker.com/cliparts/0/6/7/c/K/M/10-o-clock-md.png"
+                                    styleClass="img-responsive" style="max-width: 110px;"/>
+                    <h:graphicImage value="http://www.clker.com/cliparts/e/n/y/I/H/k/11-o-clock-hi.png"
+                                    styleClass="img-responsive" style="max-width: 110px; margin-right: 21px;"/>
+                    <h:outputText value="مداحی و سینه زنی" style="margin-right: 21px;"/>
+                </h:panelGrid>
+                <br/>
+                <p style="text-align: center;">موفق باشید</p>
+                <br/>-->
+                <!--<p dir="rtl" style="text-align: center;"><span style="color:#008000;"><strong>جلسه قرآن:</strong></span> از ساعت 20 تا 20:40<br />-->
+                <!--<strong><span style="color:#008000;">سخنرانی:</span></strong> از ساعت 45 :20 تا 21:30<br />-->
+                <!--<strong><span style="color:#008000;">مداحی:</span></strong> از ساعت 30: 21 تا 22</p>-->
                 <!--</p:tab>-->
                 <!--<p:tab title="جزئیات آدرس">-->
-                    <!--<p style="text-align: center;">-->
-                        <!--<a href="https://www.google.com/maps/place/%D8%AF%D8%A8%DB%8C%D8%B1%D8%B3%D8%AA%D8%A7%D9%86+%D8%A2%DB%8C%D8%AA+%D8%A7%D9%84%D9%84%D9%87+%D8%B3%D8%B9%DB%8C%D8%AF%DB%8C%E2%80%AD/@35.6757784,51.3931983,18.5z/data=!4m13!1m7!3m6!1s0x3f8e01b68406db4b:0x2846e4f3eee14367!2sTehran+Province,+Tehran,+District+11,+Qazvin+Square!3b1!8m2!3d35.6753923!4d51.3941957!3m4!1s0x0:0x7309eaca0405635f!8m2!3d35.6763986!4d51.393644"-->
-                           <!--target="_blank">کلیک کنید</a>-->
-                    <!--</p>-->
+                <!--<p style="text-align: center;">-->
+                <!--<a href="https://www.google.com/maps/place/%D8%AF%D8%A8%DB%8C%D8%B1%D8%B3%D8%AA%D8%A7%D9%86+%D8%A2%DB%8C%D8%AA+%D8%A7%D9%84%D9%84%D9%87+%D8%B3%D8%B9%DB%8C%D8%AF%DB%8C%E2%80%AD/@35.6757784,51.3931983,18.5z/data=!4m13!1m7!3m6!1s0x3f8e01b68406db4b:0x2846e4f3eee14367!2sTehran+Province,+Tehran,+District+11,+Qazvin+Square!3b1!8m2!3d35.6753923!4d51.3941957!3m4!1s0x0:0x7309eaca0405635f!8m2!3d35.6763986!4d51.393644"-->
+                <!--target="_blank">کلیک کنید</a>-->
+                <!--</p>-->
                 <!--</p:tab>-->
             </p:tabView>
         </h:form>
@@ -107,20 +100,20 @@
 
 
         <h:form>
-            <p:dataTable var="fun" value="#{indexWebBean.funs}" rows="5" dir="#{message.dir}">
+            <p:dataTable var="fun" value="#{indexWebBean.index.funs}" rows="5" dir="#{message.dir}">
                 <p:column headerText="#{message.last_papers}">
                     <h:graphicImage value="#{fun.pictureAddress}"
                                     style="max-height: 135px; float: right; margin-left: 15px;"
                                     styleClass="img-responsive img-rounded img-thumbnail"/>
                     <span>
                         <h:outputFormat value="#{message.subject}: " styleClass="subject"/>
-                        <h:outputFormat value="#{fun.hasEnglish ? fun.funSubject_en : fun.funSubject}"/>
+                        <h:outputFormat value="#{fun.subject}"/>
                     </span>
                     <br/>
                     <br/>
-                    <span><h:outputText value="#{fun.hasEnglish ? fun.introFun_en : fun.introFun}"
-                                        escape="false"/></span>`
-                    <a href="fun.xhtml?subject=#{fun.funSubject}"
+                    <span><h:outputText value="#{fun.introduction}"
+                                        escape="false"/></span>
+                    <a href="fun.xhtml?subject=#{fun.subject}"
                        style="float: #{message.direction_reverse}; color: #11800a;"><span>#{message.read_more}</span></a>
                 </p:column>
             </p:dataTable>

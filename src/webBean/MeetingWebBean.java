@@ -1,6 +1,7 @@
 package webBean;
 
 import model.Meeting;
+import model.Picture;
 import sessionFacadeBean.MeetingService;
 
 import javax.annotation.PostConstruct;
@@ -11,6 +12,7 @@ import javax.faces.bean.ManagedProperty;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @ManagedBean
 @RequestScoped
@@ -23,15 +25,19 @@ public class MeetingWebBean implements Serializable {
 
     private Meeting selectedMeeting;
 
-    @ManagedProperty(value="#{param.subject}")
-    private String subject;
+    @ManagedProperty(value = "#{param.loadedId}")
+    private Long loadedId;
 
     @PostConstruct
     public void init() {
-        if (subject == null)
-            meetings = meetingService.findAllOrderById(Meeting.class, false);
+        if (loadedId == null)
+            meetings = meetingService.findAllWithPictureOrderByDateDesc();
         else
-            selectedMeeting = meetingService.findBySubject(subject);
+            selectedMeeting = meetingService.findById(Meeting.class, loadedId);
+    }
+
+    public List<Picture> convertSetToList(Set<Picture> pictures) {
+        return new ArrayList<>(pictures);
     }
 
     public List<Meeting> getMeetings() {
@@ -42,11 +48,11 @@ public class MeetingWebBean implements Serializable {
         return selectedMeeting;
     }
 
-    public String getSubject() {
-        return subject;
+    public Long getLoadedId() {
+        return loadedId;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setLoadedId(Long loadedId) {
+        this.loadedId = loadedId;
     }
 }

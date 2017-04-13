@@ -11,8 +11,6 @@ public abstract class BaseModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Boolean hasEnglish;
-
     public Long getId() {
         return id;
     }
@@ -21,11 +19,4 @@ public abstract class BaseModel {
         this.id = id;
     }
 
-    public Boolean getHasEnglish() {
-        return hasEnglish;
-    }
-
-    public void setHasEnglish(Boolean hasEnglish) {
-        this.hasEnglish = hasEnglish;
-    }
 }

@@ -68,7 +68,7 @@
 
 <h:body dir="RTL">
     <f:view locale="#{i18nL10nHelper.locale}">
-            <h:graphicImage value="/resource/image/ansaralhojat.jpg" alt="هیئت انصار الحجه" styleClass="img-responsive"/>
+        <h:graphicImage value="/resource/image/ansaralhojat.jpg" alt="هیئت انصار الحجه" styleClass="img-responsive"/>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid" style="background-color: #0000FF;">
                 <div class="navbar-header navbar-right">
@@ -84,8 +84,6 @@
                     <ul class="nav navbar-nav #{message.navbar_direction}">
 
                         <li><a href="usefulLinks.xhtml">#{message.links_house}</a></li>
-
-                        <li><a href="think.xhtml">#{message.doubt}</a></li>
 
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">#{message.short_interesting}<span
@@ -113,18 +111,9 @@
                             <ul class="dropdown-menu">
                                 <li><a href="download.xhtml">#{message.lecture}</a></li>
                                 <li><a href="clip.xhtml">#{message.clip}</a></li>
-                                <!--<li><a href="maddahi.xhtml">مداحی و مولودی</a></li>-->
                             </ul>
                         </li>
                         <li><a href="index.xhtml">#{message.index}</a></li>
-
-                        <!--<li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">#{message.choosing_language}<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="index.xhtml?language=fa">فارسی</a></li>
-                                <li><a href="index.xhtml?language=en">english</a></li>
-                            </ul>
-                        </li>-->
                     </ul>
                     <ul class="nav navbar-nav #{message.navbar_reverse_direction}" style="color: #1a1a1a">
                         <li><a href="#"><span style="color: orange;" id="clock"></span></a></li>
@@ -156,13 +145,13 @@
                         <h:form>
                             <p dir="rtl" style="text-align: center;"><strong><span
                                     style="color:#008000;">#{message.lecture}: </span></strong><h:commandLink
-                                    action="download" value=" 12 اسفند"/></p>
+                                    action="download" value="#{indexWebBean.index.lastLectureDate}"/></p>
                             <p dir="rtl" style="text-align: center;"><span
                                     style="color:#008000;"><strong>#{message.clip}:&zwnj; </strong></span><h:commandLink
-                                    action="clip" value=" فراق"/></p>
+                                    action="clip" value="#{indexWebBean.index.lastUpdatedClipName}"/></p>
                             <p dir="rtl" style="text-align: center;"><span
                                     style="color:#008000;"><strong>#{message.picture}: &zwnj;</strong></span><h:commandLink
-                                    action="meeting" value=" فاطمیه سال 95"/></p>
+                                    action="meeting" value="#{indexWebBean.index.lastUpdatedPictureDate}"/></p>
                         </h:form>
                     </p:panel>
                     <br/>

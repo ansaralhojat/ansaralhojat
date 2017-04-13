@@ -1,15 +1,11 @@
 package sessionFacadeBean.impl;
 
-import model.BaseModel;
-import model.Person;
 import model.Question;
-import sessionFacadeBean.BaseService;
 import sessionFacadeBean.QuestionService;
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.criteria.JoinType;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Stateless
@@ -17,7 +13,11 @@ public class QuestionServiceIMPL extends BaseServiceIMPL<Question> implements Qu
 
     @Override
     public List<Question> findAllQuestionWithResolveOrderByDateDesc() {
-        Query query = entityManager.createQuery("select q from Question q where q.resolve is not null order by q.date desc ");
-        return query.getResultList();
+        return entityManager.createNamedQuery("findAllQuestionWithResolveOrderByDateDesc").getResultList();
+    }
+
+    @Override
+    protected void addJoinFetch(Root<Question> from) {
+        from.fetch("resolve", JoinType.LEFT);
     }
 }

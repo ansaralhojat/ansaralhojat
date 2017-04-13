@@ -4,7 +4,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="template_9_3.xhtml">
@@ -19,7 +18,9 @@
         <p:panel header="گالری عکس" >
             <h:form>
                 <ui:repeat value="#{meetingWebBean.meetings}" var="meeting">
-                    <a href="gallery.xhtml?subject=#{meeting.subject}"><span>#{meeting.subject}</span></a>
+                    <a href="picture.xhtml?loadedId=#{meeting.id}">
+                        <span style="color: red;">#{meeting.date}</span><h:outputText value=": " /><span style="color: green;">#{meeting.decorum.title}</span>
+                    </a>
                     <br />
                 </ui:repeat>
             </h:form>

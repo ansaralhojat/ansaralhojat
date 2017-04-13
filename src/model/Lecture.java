@@ -1,67 +1,70 @@
 package model;
 
-import baseInfo.Decorum;
 import baseInfo.Lecturer;
-import baseInfo.Roze;
-import baseInfo.converter.DecorumConverter;
 import baseInfo.converter.LecturerConverter;
-import baseInfo.converter.RozeConverter;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "TB_LECTURE")
+@Table(name = "tb_lecture_")
+@NamedQueries({
+        @NamedQuery(name = "findLastLecture",
+                query = "select distinct l from Lecture l " +
+                        " left join fetch l.meeting " +
+                        " left join fetch l.mp3OfLectures ml " +
+                        " left join fetch ml.mp3 m " +
+                        " left join fetch l.text " +
+                        " where l.id = (select max(l.id) from Lecture l)")
+})
 public class Lecture extends BaseModel {
-    @Fetch(FetchMode.SELECT)
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "lecture")
-    private List<File> file;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false, name = "meeting_id")
+    private Meeting meeting;
 
-    @Fetch(FetchMode.SELECT)
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "lecture")
-    private List<Text> text;
+    @OneToMany(mappedBy = "lecture", fetch = FetchType.LAZY)
+    private Set<MP3OfLecture> mp3OfLectures;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "text_id")
+    private Text text;
 
     @Enumerated
     @Convert(converter = LecturerConverter.class)
     private Lecturer lecturer;
 
-    private String picturePath;
-
+    @Column(nullable = false)
     private String masterSubject;
 
     private String slaveSubject;
 
+    @Column(nullable = false)
     private Integer masterEpisode;
 
+    @Column(nullable = false)
     private Integer slaveEpisode;
 
-    @Enumerated
-    @Convert(converter = DecorumConverter.class)
-    private Decorum decorum;
-
-    @Transient
-    @Enumerated
-    @Convert(converter = RozeConverter.class)
-    private Roze roze;
-
-    private String date;
-
-    public List<File> getFile() {
-        return file;
+    public Meeting getMeeting() {
+        return meeting;
     }
 
-    public void setFile(List<File> file) {
-        this.file = file;
+    public void setMeeting(Meeting meeting) {
+        this.meeting = meeting;
     }
 
-    public List<Text> getText() {
+    public Set<MP3OfLecture> getMp3OfLectures() {
+        return mp3OfLectures;
+    }
+
+    public void setMp3OfLectures(Set<MP3OfLecture> mp3OfLectures) {
+        this.mp3OfLectures = mp3OfLectures;
+    }
+
+    public Text getText() {
         return text;
     }
 
-    public void setText(List<Text> text) {
+    public void setText(Text text) {
         this.text = text;
     }
 
@@ -71,14 +74,6 @@ public class Lecture extends BaseModel {
 
     public void setLecturer(Lecturer lecturer) {
         this.lecturer = lecturer;
-    }
-
-    public String getPicturePath() {
-        return picturePath;
-    }
-
-    public void setPicturePath(String picturePath) {
-        this.picturePath = picturePath;
     }
 
     public String getMasterSubject() {
@@ -113,27 +108,4 @@ public class Lecture extends BaseModel {
         this.slaveEpisode = slaveEpisode;
     }
 
-    public Decorum getDecorum() {
-        return decorum;
-    }
-
-    public void setDecorum(Decorum decorum) {
-        this.decorum = decorum;
-    }
-
-    public Roze getRoze() {
-        return roze;
-    }
-
-    public void setRoze(Roze roze) {
-        this.roze = roze;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 }
