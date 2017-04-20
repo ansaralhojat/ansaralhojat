@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("/lectures")
 @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
@@ -18,9 +19,8 @@ public class LectureResource {
     private LectureService lectureService;
 
     @GET
-    public Lecture getLectures() {
-        final Lecture lectures = lectureService.findLastLecture();
-        return lectures;
+    public List<Lecture> getLectures() {
+        return lectureService.findAllOrderById(Lecture.class, false);
     }
 
 }

@@ -5,7 +5,7 @@
     <jta-data-source>java:jboss/datasources/mySQLDS</jta-data-source>
     <properties>
         <!--<property name="hibernate.hbm2ddl.auto" value="update" />-->
-        <property name="hibernate.show_sql" value="true" />
+        <!--<property name="hibernate.show_sql" value="true" />-->
         <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
         <property name="hibernate.connection.CharSet" value="utf-8" />
         <property name="hibernate.connection.characterEncoding" value="utf-8" />

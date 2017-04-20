@@ -1,7 +1,10 @@
 package baseInfo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.faces.model.SelectItem;
 
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Lecturer {
     HEYDARY_ZARE(0, "استاد حیدری زارع", "http://ansaralhojat.com:8080/image/lecture/heydari.jpeg"),
     SEYYED_HOSEINI(1, "حجه الاسلام حسینی", "http://ansaralhojat.com/resource/image/seyyed_hoseini.jpg"),

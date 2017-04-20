@@ -1,7 +1,10 @@
 package baseInfo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.faces.model.SelectItem;
 
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Quality {
     LOW(0, "کم"), MEDIUM(1, "متوسط"), HIGH(2, "زیاد");
     private int id;

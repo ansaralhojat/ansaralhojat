@@ -26,20 +26,19 @@ public class LectureServiceIMPL extends BaseServiceIMPL<Lecture> implements Lect
         addJoinFetch(from);
         Set<Predicate> predicates = new HashSet<>();
         if (subject != null && !subject.isEmpty()) {
-            final Predicate masterPredicate = builder.like(from.get("masterSubject"), subject);
-            final Predicate slavePredicate = builder.like(from.get("slaveSubject"), subject);
+            final Predicate masterPredicate = builder.like(from.get("masterSubject"), subject.trim());
+            final Predicate slavePredicate = builder.like(from.get("slaveSubject"), subject.trim());
             predicates.add(builder.or(masterPredicate, slavePredicate));
         }
         if (lecturer >= 0)
             predicates.add(builder.equal(from.get("lecturer"), lecturer));
         if (decorum >= 0)
-            predicates.add(builder.equal(from.get("decorum"), decorum));
+            predicates.add(builder.equal(from.get("meeting").get("decorum"), decorum));
 
         query.where(predicates.toArray(new Predicate[predicates.size()]));
         query.orderBy(builder.desc(from.get("id")));
-        query.distinct(true);
 
-        return entityManager.createQuery(query).getResultList();
+        return entityManager.createQuery(query).getResultList().stream().distinct().collect(Collectors.toList());
     }
 
     @Override
