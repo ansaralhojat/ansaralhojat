@@ -13,9 +13,10 @@ import java.util.List;
 @Subselect(value = "SELECT\n" +
         "  1                                    AS id,\n" +
         "  (SELECT t.abstractText\n" +
-        "   FROM tb_text_ t\n" +
-        "   ORDER BY t.id DESC\n" +
-        "   LIMIT 1)                            AS lastAbstractText,\n" +
+        "   FROM tb_lecture_ l\n" +
+        "     LEFT JOIN tb_text_ t ON t.id = l.text_id\n" +
+        "   ORDER BY l.id DESC\n" +
+        "LIMIT 1)                            AS lastAbstractText,\n" +
         "  (SELECT max(f.id)\n" +
         "   FROM tb_fun_ f)                     AS fun_id,\n" +
         "  (SELECT max(f.id)\n" +

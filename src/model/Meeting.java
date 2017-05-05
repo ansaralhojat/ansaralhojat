@@ -3,6 +3,7 @@ package model;
 import baseInfo.Decorum;
 import baseInfo.converter.DecorumConverter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -26,6 +27,9 @@ public class Meeting extends BaseModel {
     private Short count;
 
     private String comment;
+
+    @Formula(value = "(SELECT count(*) FROM tb_picture_ p WHERE p.meeting_id = id)")
+    private Integer pictureCount;
 
     public Set<Picture> getPictures() {
         return pictures;
@@ -65,5 +69,13 @@ public class Meeting extends BaseModel {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Integer getPictureCount() {
+        return pictureCount;
+    }
+
+    public void setPictureCount(Integer pictureCount) {
+        this.pictureCount = pictureCount;
     }
 }

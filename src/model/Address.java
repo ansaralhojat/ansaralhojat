@@ -33,6 +33,9 @@ public class Address extends BaseModel {
 
     private String additionalInformation;
 
+    @Column(nullable = false)
+    private String version;
+
     public String getName() {
         return name;
     }
@@ -103,5 +106,13 @@ public class Address extends BaseModel {
 
     public void setAdditionalInformation(String additionalInformation) {
         this.additionalInformation = additionalInformation;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
     }
 }

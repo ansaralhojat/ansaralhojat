@@ -22,7 +22,7 @@ public class ClipWebBean implements Serializable {
 
     @PostConstruct
     public void init() {
-        clips = clipService.findAllOrderById(model.Clip.class, false);
+        clips = clipService.findAllOrderById(Clip.class, false);
     }
 
     public List<model.Clip> getClips() {

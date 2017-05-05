@@ -21,7 +21,7 @@
                       closable="false" resizable="false">
                 <h:graphicImage value="/resource/image/ajax-loader.gif"/>
             </p:dialog>
-            <p:tabView dir="#{message.dir}">
+            <p:tabView dir="#{message.dir}" rendered="#{indexWebBean.index.lastAbstractText != null}">
                 <p:tab title="#{message.last_lecture}">
                     <h:outputText value="#{indexWebBean.index.lastAbstractText}" escape="false"/>
                     <h:commandLink action="lastMeeting" onclick="PF('statusDialog').show();"

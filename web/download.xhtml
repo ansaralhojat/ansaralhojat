@@ -118,7 +118,8 @@
                     <p:dialog header="خلاصه سخنرانی" widgetVar="abstract#{lecture.id}" showEffect="bounce"
                               hideEffect="explode" modal="true" resizable="false" draggable="false">
                         <p:scrollPanel mode="native" style="width:400px;height:580px">
-                            <h:outputText value="#{lecture.text.text}" escape="false"/>
+                            <h:outputText value="#{lecture.text.text == null ? 'موجود نمی باشد': lecture.text.text}"
+                                          escape="false"/>
                         </p:scrollPanel>
                     </p:dialog>
                 </p:column>
@@ -164,9 +165,6 @@
                                     PF('statusDialog').hide();
                                 }
                             </script>
-                        </h:panelGroup>
-                        <h:panelGroup rendered="#{downloadWebBean.getCompleteHighQualityMp3(lecture)!= null}">
-                            <p>موجود نمی باشد</p>
                         </h:panelGroup>
                     </div>
                 </p:column>

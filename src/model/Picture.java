@@ -1,12 +1,17 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_picture_")
+@NamedQuery(name = "nq_picture_findByMeetingId",
+        query = "select p from Picture p where p.meeting.id = ?1")
 public class Picture extends BaseModel {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false, name = "meeting_id")
+    @JsonIgnore
     private Meeting meeting;
 
     @Column(nullable = false)
