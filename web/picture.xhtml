@@ -12,7 +12,8 @@
                 value="گالری ها-گالری عکس-عکس تصویر | هیئت انصار الحجه | متوسلین به حضرت زهرا | استاد حیدری زارع"/>
     </ui:define>
     <ui:define name="description">
-        <meta name="description" content="#{meetingWebBean.selectedMeeting.decorum.title}"/>
+        <meta name="description"
+              content="#{meetingWebBean.selectedMeeting.date.concat(', ').concat(meetingWebBean.selectedMeeting.decorum.title)}"/>
     </ui:define>
 
     <ui:define name="mainPanel">

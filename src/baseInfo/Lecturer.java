@@ -11,7 +11,8 @@ public enum Lecturer {
     BIGDELOO(2, "حجه الاسلام بیگدلو", "http://ansaralhojat.com:8080/image/lecture/bigdeli.jpg"),
     FEIZ(3, "حجه الاسلام فیض", "http://ansaralhojat.com:8080/image/lecture/seyyed_feiz.jpg"),
     ESMAEILI(4, "حجه الاسلام اسماعیلی", "http://ansaralhojat.com:8080/image/lecture/esmaeely.jpg"),
-    MANSOORI(5, "حجه الاسلام منصوری", "http://ansaralhojat.com:8080/image/lecture/nopic.jpg");
+    MANSOORI(5, "حجه الاسلام منصوری", "http://ansaralhojat.com:8080/image/lecture/nopic.jpg"),
+    EFTEKHARI(6, "حجه الاسلام افتخاری", "http://ansaralhojat.com:8080/image/lecture/nopic.jpg");
 
     private int id;
     private String title;

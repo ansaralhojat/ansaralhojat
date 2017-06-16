@@ -1,27 +1,5 @@
 package util;
 
-import model.Fun;
-import model.Meeting;
-import model.Text;
-import model.Think;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import sessionFacadeBean.BaseService;
-import sessionFacadeBean.FunService;
-import sessionFacadeBean.MeetingService;
-
-import javax.inject.Inject;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import java.io.File;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-
 //@Singleton
 //@Named
 public class SEOUtil {
