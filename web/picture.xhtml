@@ -22,9 +22,11 @@
             <h2 class="header" style="text-align: center;">متوسلین به حضرت زهرا سلام الله علیها</h2>
             <ui:repeat value="#{meetingWebBean.convertSetToList(meetingWebBean.selectedMeeting.pictures)}"
                        var="picture">
-                <h:graphicImage value="#{picture.address}" alt="#{picture.alt}"
-                                styleClass="img-responsive"
-                                style="display: block; margin-left: auto; margin-right: auto;"/>
+                <a href="#{picture.original}" target="_blank">
+                    <h:graphicImage value="#{picture.thumbnail}" alt="#{picture.alt}"
+                                    styleClass="img-responsive"
+                                    style="display: block; margin-left: auto; margin-right: auto;"/>
+                </a>
                 <p style="text-align: center;">#{picture.description}</p>
                 <br/>
             </ui:repeat>

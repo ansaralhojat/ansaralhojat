@@ -24,7 +24,8 @@ public enum Decorum {
     SHAHADAT_EMEM_SADEGH(15, "شهادت امام صادق"),
     EDYE_GHADIR(16, "عید غدیر"),
     SHAHADAT_EMAM_HASAN(17, "وفات رسول الله،‌ شهادت امام حسن"),
-    SHAHADAT_EMAMA_REZA(18, "شهادت امام رضا");
+    SHAHADAT_EMAMA_REZA(18, "شهادت امام رضا"),
+    VELADAT_EMAMA_REZA(19, "ولادت امام رضا");
 
     private int id;
     private String title;

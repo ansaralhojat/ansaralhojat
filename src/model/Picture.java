@@ -14,7 +14,13 @@ public class Picture extends BaseModel {
     @JsonIgnore
     private Meeting meeting;
 
+    @Column
+    private String original;
+
     @Column(nullable = false)
+    private String thumbnail;
+
+    @Column
     private String address;
 
     private String alt;
@@ -27,6 +33,22 @@ public class Picture extends BaseModel {
 
     public void setMeeting(Meeting meeting) {
         this.meeting = meeting;
+    }
+
+    public String getOriginal() {
+        return original;
+    }
+
+    public void setOriginal(String original) {
+        this.original = original;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 
     public String getAddress() {
