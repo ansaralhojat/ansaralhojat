@@ -6,13 +6,13 @@ import javax.faces.model.SelectItem;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Lecturer {
-    HEYDARY_ZARE(0, "استاد حیدری زارع", "http://ansaralhojat.com:8080/image/lecture/heydari.jpeg"),
-    SEYYED_HOSEINI(1, "حجه الاسلام حسینی", "http://ansaralhojat.com/resource/image/seyyed_hoseini.jpg"),
-    BIGDELOO(2, "حجه الاسلام بیگدلو", "http://ansaralhojat.com:8080/image/lecture/bigdeli.jpg"),
-    FEIZ(3, "حجه الاسلام فیض", "http://ansaralhojat.com:8080/image/lecture/seyyed_feiz.jpg"),
-    ESMAEILI(4, "حجه الاسلام اسماعیلی", "http://ansaralhojat.com:8080/image/lecture/esmaeely.jpg"),
-    MANSOORI(5, "حجه الاسلام منصوری", "http://ansaralhojat.com:8080/image/lecture/nopic.jpg"),
-    EFTEKHARI(6, "حجه الاسلام افتخاری", "http://ansaralhojat.com:8080/image/lecture/nopic.jpg");
+    HEYDARY_ZARE(0, "استاد حیدری زارع", "http://ansaralhojat.com/static/image/lecture/heydari.jpeg"),
+    SEYYED_HOSEINI(1, "حجه الاسلام حسینی", "http://ansaralhojat.com/static/image/lecture/seyyed_hoseini.jpg"),
+    BIGDELOO(2, "حجه الاسلام بیگدلو", "http://ansaralhojat.com/static/image/lecture/bigdeli.jpg"),
+    FEIZ(3, "حجه الاسلام فیض", "http://ansaralhojat.com/static/image/lecture/seyyed_feiz.jpg"),
+    ESMAEILI(4, "حجه الاسلام اسماعیلی", "http://ansaralhojat.com/static/image/lecture/esmaeely.jpg"),
+    MANSOORI(5, "حجه الاسلام منصوری", "http://ansaralhojat.com/static/image/lecture/nopic.jpg"),
+    EFTEKHARI(6, "حجه الاسلام افتخاری", "http://ansaralhojat.com/static/image/lecture/nopic.jpg");
 
     private int id;
     private String title;
